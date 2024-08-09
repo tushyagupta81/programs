@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="js/login.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <a href="https://uiet.puchd.ac.in/?page_id=323">
+          <img
+          style="height: 150px;"
+          src="https://upload.wikimedia.org/wikipedia/en/9/94/UIET_logo.png"
+          />
+        </a>
+        <div>
+          <h1>TRAINING AND PLACEMENT MANAGEMENT SYSTEM</h1>
+          <h3>UNIVERSITY INSTITUTE OF ENGINEERING AND TECHNOLOGY</h3>
+          <h3>PANJAB UNIVERSITY CHANDIGARH</h3>
+        </div>
+        <a href="https://cpc.puchd.ac.in/">
+          <img
+          style="height: 150px;" 
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCrWmU896E7DxoAvS2Z_V9BW09UlXZrE1fSxf_KqJ8Jg&s"
+          />
+        </a>
+      </div>
+      <h1>
+        WELCOME TO LOGIN PORTAL
+      </h1>
+      <hr>
+    </header>
+
+    <div class="container">
+      <h2>LOGIN FOR REGISTRATED CANDIDATE'S</h2>
+      <form id="login-form">
+        <section name="REGISTERED">
+          <label for="name">CANDIDATE'S ID :</label>
+          <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Enter your Candidate's ID"
+          required
+          />
+          <label for="date">DATE OF BIRTH :</label>
+          <input
+          type="date"
+          name="date"
+          id="date"
+          placeholder="ENTER DATE OF BIRTH"
+          required
+          />
+          <button type="submit">Submit</button>
+        </section>
+      </form>
+    </div>
+    <div class="container">
+      <h2>SIGNUP FOR NEW CANDIDATE'S</h2>
+      <form id="signup-form">
+        <section name="NEW">
+          <label for="name">CANDIDATE NAME:</label>
+          <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="ENTER CANDIDATE'S NAME"
+          required
+          />
+          <label for="id">CANDIDATE ID:</label>
+          <input
+          type="text"
+          name="id"
+          id="id"
+          placeholder="ENTER CANDIDATE'S ID"
+          required
+          />
+          <label for="date">DATE OF BIRTH :</label>
+          <input
+          type="date"
+          name="date"
+          id="date"
+          placeholder="ENTER DATE OF BIRTH"
+          required
+          />
+          <label for="fname">FATHER'S NAME:</label>
+          <input
+          type="text"
+          name="fname"
+          id="fname"
+          placeholder="ENTER FATHER'S NAME"
+          required
+          />
+          <label for="mname">MOTHER'S NAME:</label>
+          <input
+          type="text"
+          name="mname"
+          id="mname"
+          placeholder="ENTER MOTHER'S NAME"
+          required
+          />
+
+          <label for="country">SELECT COUNTRY </label>
+          <select name="country" id="country">
+            <option value="India">INDIA</option>
+            <option value="canada">Canada</option>
+            <option value="usa">USA</option>
+          </select>
+
+          <label for="address">PARMANENT ADDRESS:</label>
+          <textarea
+            name="address"
+            id="address"
+            placeholder="ENTER PARMANENT ADDRESS "
+            rows="2"
+            ></textarea>
+          <input
+          type="checkbox"
+          name="terms"
+          id="terms"
+          value="agree"
+          class="tac"
+          required
+          />
+          <label class="tac" for="terms"
+            >I agree on terms and conditions.</label
+          >
+          <button type="submit">Submit</button>
+        </section>
+      </form>
+    </div>
+  </body>
+</html>

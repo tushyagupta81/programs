@@ -1,0 +1,14 @@
+li,
+p {
+  font-size: x-large;
+  text-align: justify;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.container2 {
+  font-size: xx-large;
+}
+.container2 ol, .container2 li{
+  margin-left:4%;
+  padding:0;
+}

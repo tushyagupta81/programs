@@ -1,0 +1,69 @@
+main{
+    max-width:50%;
+    margin-left:auto;
+    margin-right:auto;
+    font-family: 'Arial';
+    border:3px solid black;
+    padding:3px;
+    border-radius:5px;
+    height:57rem;
+    position:relative;
+    overflow:hidden;
+}
+h3,h2{
+    color:red;
+}
+img{
+    /* width:10%; */
+    /* height:auto; */
+    object-fit:cover;
+    padding:5px;
+}
+.header{
+    height:7rem;
+    display:flex;
+    align:center;
+    font-size:1.3rem;
+}
+h3,h1,h2,.header{
+    max-width:fit-content;
+    margin-left:auto;
+    margin-right:auto;
+}
+p{
+    text-align:justify;
+    text-justify:inter-word;
+    padding-left:10px;
+    padding-right:10px;
+}
+h2{
+    font-size:2rem;
+}
+.heading{
+    color:white;
+    background-image:linear-gradient(to right,blue,#7dc1f5,blue);
+    border-radius:10px;
+    padding-left:5rem;
+    padding-right:5rem;
+    padding-top:3px;
+    padding-bottom:3px;
+    font-size:3rem;
+}
+p,li{
+    font-size:1.4rem;
+}
+li{
+    padding-top:5px;
+    padding-bottom:5px;
+}
+.watermark{
+    width:100%;
+    height:100%;
+    top:50%;
+    right:2%;
+    position:absolute;
+    background-image: url('UIET_logo.png');
+    background-size: 55rem 55rem;
+    background-repeat: no-repeat;
+    opacity:0.3;
+}

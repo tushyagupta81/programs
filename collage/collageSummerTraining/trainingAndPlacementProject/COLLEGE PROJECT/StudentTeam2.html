@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Team 2</title>
+
+    <link rel="stylesheet" href="StudentTeam.css">
+</head>
+<style>
+    .panjab,.uiet{
+  height: 150px;
+  width: 150px;
+}
+h1{
+  font-size: 48px;
+  color: #ff7f50;
+   text-shadow:2px 2px 4px rgba(0,0,0,0.5);
+}
+  h2{
+    font-size: 48px;
+      color: red;
+      animation: glow 5s ease-in-out infinite alternate;
+      text-align: center;
+  }
+  @keyframes glow{
+      from{
+          text-shadow: 0 0 10px rgb(246, 61, 20),0 0 20px rgb(236, 82, 40);
+      
+      }
+      to{
+          text-shadow: 0 0 20px #8c1476 , 0 0 30px #4a148c;
+      }
+
+  }
+.tpcm{
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+header,.uni {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+.uni{
+  text-align:center ;
+  color: rgb(204, 12, 12);
+ }
+.container{
+  display:flex;
+  flex:1;
+  justify-content: space-between;
+ }
+nav{
+    width: 1480px;
+    height: 70px;
+    border: 5px solid rgb(255, 3, 3);
+    padding: 5px;
+    margin: 0px;
+
+  }
+  a{
+    font-size: large;
+    color: crimson;
+  }
+/* nav {
+    background-color: #555;
+    color: #fff;
+    padding: 10px;
+} */
+
+/* main {
+    padding: 20px;
+} */
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+</style>
+<body>
+    
+    <div class="overlay"></div>
+    <header class="container">
+        <div><img class="panjab" src="https://upload.wikimedia.org/wikipedia/en/9/96/Panjab_University_logo.png"></div>
+        <div class="uni"><h2>Univeristy Institute of Engineering & Technology <br>Panjab University, Chandigarh</h2></div>
+        <div> <img class="uiet" src="https://upload.wikimedia.org/wikipedia/en/9/94/UIET_logo.png"></div>
+       
+    </header>
+    <div  class="uni"><h1>Training and Placement Management</h1></div>
+    <nav>
+        <ul>
+            <a href="#home">Home</a>
+            <a style="margin-left: 25%;" href="#team">Team</a>
+            <a style="margin-left: 25%;"  href="#training">Training</a>
+            <a style="margin-left: 25%;"  href="#placements">Placements</a>
+        </ul>
+    </nav>
+    <section id="team">
+        <h2>Our Team</h2>
+        <table id="team-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Roll Number</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <th>SUNAINA GULATI</th>
+                    <th>NIL</th>
+                    <th> TEACHER</th>
+                    <th>NIL</th>
+                </tr>
+                <tr>
+                    <th>LOKESH MINGLANI</th>
+                    <th>NIL</th>
+                    <th> TEACHER</th>
+                    <th>NIL</th>
+                </tr>
+                <tr>
+                    <th>SURAJ SINGH</th>
+                    <th>UE233100</th>
+                    <th> STUDENT</th>
+                    <th>OK</th>
+                </tr>
+                <tr>
+                    <th>SURYA PRATAP SINGH</th>
+                    <th>UE233101</th>
+                    <th>STUDENT </th>
+                    <th>OK</th>
+                </tr>
+                <tr>
+                    <th>SUSHANT KUMAR THAKUR</th>
+                    <th>UE233102</th>
+                    <th>STUDENT </th>
+                    <th>OK</th>
+                </tr>
+                <tr>
+                    <th>SWARNIM ARYA</th>
+                    <th>UE233103</th>
+                    <th>STUDENT </th>
+                    <th>OK</th>
+                </tr>
+
+                <tr>
+                    <th>SWATI </th>
+                    <th>UE233104</th>
+                    <th>STUDENT </th>
+                    <th>OK</th>
+                </tr>
+
+                <tr>
+                    <th>TARUN SINGH NEGI</th>
+                    <th>UE233105</th>
+                    <th>STUDENT </th>
+                    <th>OK</th>
+                </tr>
+                <tr>
+                    <th>TUSHYA </th>
+                    <th>UE233106</th>
+                    <th>STUDENT </th>
+                    <th>OK</th>
+                </tr>
+                <tr>
+                    <th>VAISHNAVI</th>
+                    <th>UE233108</th>
+                    <th>STUDENT </th>
+                    <th>OK</th>
+                </tr>
+                <tr>
+                    <th>VANSHIKA </th>
+                    <th>UE233109</th>
+                    <th>STUDENT </th>
+                    <th>OK</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Team members will be dynamically added here -->
+            </tbody>
+        </table>
+        <button id="add-team-member">Add Team Member</button>
+    </section>
+
+    <section id="training">
+        <h2>Training Resources</h2>
+        <ul>
+            <li><a href="#">Resource 1</a></li>
+            <li><a href="#">Resource 2</a></li>
+            <li><a href="#">Resource 3</a></li>
+        </ul>
+    </section>
+
+    <section id="placements">
+        <h2>Placement Updates</h2>
+        <p>Stay updated with the latest placement news and opportunities.</p>
+    </section>
+    <script src="StudentTeam.js"></script>
+
+</body>
+</html>

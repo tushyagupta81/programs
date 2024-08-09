@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background-color: #f4f4f4; */
+    background-image: url(https://img.freepik.com/free-photo/top-view-blue-monday-concept-composition-with-telephone_23-2149139104.jpg);
+    color: #333;
+}
+h1{
+    font-size: 48px;
+        color: #ff7f50;
+         text-shadow:2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.contact-us {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgb(124, 162, 169);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.contact-us h1 {
+    text-align: center;
+    color: #333;
+}
+
+.contact-us p {
+    text-align: center;
+    color: #666;
+}
+
+.contact-info {
+    /* display: flex;
+    justify-content: space-around; */
+    margin-bottom: 20px;
+}
+
+.info-item h3 {
+    margin: 0;
+    color: #333;
+}
+
+.info-item p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.contact-form label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #333;
+}
+.panjab,.uiet{
+  height: 150px;
+  width: 150px;
+}
+header,.uni {
+    background-color: #E0F7FA;
+    color: #004D40;
+    padding: 20px;
+    text-align: center;
+}
+.uni{
+  text-align:center ;
+  color: rgb(204, 12, 12);
+ }
+.container{
+  display:flex;
+  flex:1;
+  justify-content: space-between;
+ }
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.contact-form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}
+</style>
+<body>
+    <div class="overlay"></div>
+    <header class="container">
+        <div><img class="panjab" src="https://upload.wikimedia.org/wikipedia/en/9/96/Panjab_University_logo.png"></div>
+        <div class="uni"><h2>Univeristy Institute of Engineering & Technology <br>Panjab University, Chandigarh</h2></div>
+        <div> <img class="uiet" src="https://upload.wikimedia.org/wikipedia/en/9/94/UIET_logo.png"></div>
+       
+    </header>
+    <div  class="uni"><h1>Training and Placement Management</h1></div>
+    <div class="contact-us">
+        <h1>Contact Us</h1>
+        <p>Have questions or need help? Reach out to us!</p>
+        
+        <div class="contact-info">
+            <div class="info-item">
+                <h3>Email Us</h3>
+                <p><a href="mailto:support@trainingplacement.com">support@trainingplacement.com</a></p>
+            </div><br>
+            <div class="info-item">
+                <h3>Call Us</h3>
+                <p><a href="tel:+0172-2541242">0172-2541242</a></p>
+            </div><br>
+            <div class="info-item">
+                <h3>Visit Us</h3>
+                <p>University Institute of Engineering and Technology
+                    Sector 25, South Campus,
+                    Panjab University,
+                    Chandigarh (Union Territory),
+                    INDIA. PINCODE: 160014</p>
+            </div>
+        </div>
+
+        <form class="contact-form">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</body>
+</html>
