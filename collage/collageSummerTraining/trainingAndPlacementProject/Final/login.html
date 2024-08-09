@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login page</title>
+    <link rel="stylesheet" href="css/login.css" />
+    <script src="js/login.js" defer></script>
+  </head>
+  <body>
+    <section class="top">
+      <header class="header">
+        <div class="image">
+          <img
+          src="https://upload.wikimedia.org/wikipedia/en/9/94/UIET_logo.png"
+          />
+        </div>
+        <div class="heading">
+          <h1>
+            Panjab University, Chandigarh<br />University Institute of Engineering
+            & Technology
+          </h1>
+        </div>
+        <div class="image2">
+          <img
+          src="https://upload.wikimedia.org/wikipedia/en/9/96/Panjab_University_logo.png"
+          />
+        </div>
+      </header>
+      <div class="heading"><h1>Login Page</h1></div>
+      <nav>
+        <a class="home-png" href="home.html"><img style="height: 30px; margin: 0%;" src="https://cdn1.vectorstock.com/i/1000x1000/66/20/home-icon-house-logo-simple-flat-style-vector-23256620.jpg"></a>
+        <a href="about.html">About Us</a>
+        <a href="PlacementProcedure.html">Placement Procedure</a>
+        <a href="StudentTeam.html">Student Team</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+      </nav>
+    </section>
+    <div class="container">
+      <h2>LOGIN FOR REGISTRATED CANDIDATE'S</h2>
+      <form id="login-form">
+        <section name="REGISTERED">
+          <label for="name">CANDIDATE'S ID :</label>
+          <input type="text" name="name" id="name" placeholder="Enter your Candidate's ID" required />
+          <label for="date">DATE OF BIRTH :</label>
+          <input type="date" name="date" id="date" placeholder="ENTER DATE OF BIRTH" required />
+          <button type="submit">Submit</button>
+        </section>
+      </form>
+    </div>
+    <div class="container">
+      <h2>SIGNUP FOR NEW CANDIDATE'S</h2>
+      <form id="signup-form">
+          <label for="name">CANDIDATE NAME:</label>
+          <input type="text" name="name" id="name" placeholder="ENTER CANDIDATE'S NAME" required />
+          <label for="id">CANDIDATE ID:</label>
+          <input type="text" name="id" id="id" placeholder="ENTER CANDIDATE'S ID" required />
+          <label for="date">DATE OF BIRTH :</label>
+          <input type="date" name="date" id="date" placeholder="ENTER DATE OF BIRTH" required />
+          <label for="fname">FATHER'S NAME:</label>
+          <input type="text" name="fname" id="fname" placeholder="ENTER FATHER'S NAME" required />
+          <label for="mname">MOTHER'S NAME:</label>
+          <input type="text" name="mname" id="mname" placeholder="ENTER MOTHER'S NAME" required />
+          <label for="country">SELECT COUNTRY </label>
+          <select name="country" id="country">
+            <option value="India">INDIA</option>
+            <option value="canada">Canada</option>
+            <option value="usa">USA</option>
+          </select>
+          <label for="address">PARMANENT ADDRESS:</label>
+          <textarea name="address" id="address" placeholder="ENTER PARMANENT ADDRESS " rows="2" ></textarea>
+          <input type="checkbox" name="terms" id="terms" value="agree" class="tac" required />
+          <label class="tac" for="terms" >I agree on terms and conditions.</label>
+          <button type="submit">Submit</button>
+      </form>
+    </div>
+    <footer>
+      <p>&copy; 2024 Training and Placement Management System</p>
+    </footer>
+  </body>
+</html>
