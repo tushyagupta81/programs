@@ -7,3 +7,24 @@
 [submodule "courses/deepLearingSpecialization"]
   path = courses/deepLearingSpecialization
   url = https://github.com/amanchadha/coursera-deep-learning-specialization.git
+[submodule "courses/Machine-Learning-Specialization-Coursera"]
+	path = courses/Machine-Learning-Specialization-Coursera
+	url = https://github.com/greyhatguy007/Machine-Learning-Specialization-Coursera.git
+[submodule "followAlong/jsMastery/realtimeapp"]
+  path = followAlong/jsMastery/realtimeapp
+  url = https://github.com/tushyagupta81/realtimeNextjsCourse.git
+[submodule "followAlong/next-website-follow-along"]
+  path = followAlong/next-website-follow-along
+  url = https://github.com/tushyagupta81/nextSiteFollow.git
+[submodule "hackathons/SFHS codehack"]
+  path = hackathons/SFHS\ codehack
+  url = https://github.com/tushyagupta81/1220_HS_CODEHACK2022.git
+[submodule "projects/SpotifyToYoutube"]
+  path = projects/SpotifyToYoutube
+  url = https://github.com/tushyagupta81/SpotifyToYoutube.git
+[submodule "projects/bangaloreDashboard/dashboard2"]
+  path = projects/bangaloreDashboard/dashboard2
+  url = https://github.com/tushyagupta81/bangaloreDashboard.git
+[submodule "school/Project"]
+  path = school/Project
+  url = https://github.com/tushyagupta81/CS_Project.git
