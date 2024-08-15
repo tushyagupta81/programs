@@ -28,3 +28,6 @@
 [submodule "school/Project"]
   path = school/Project
   url = https://github.com/tushyagupta81/CS_Project
+[submodule "hackathons/boosthack2/financeApp"]
+  path = hackathons/boosthack2/financeApp
+  url = https://github.com/tushyagupta81/boosthack2
