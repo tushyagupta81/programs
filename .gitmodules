@@ -1,30 +1,30 @@
 [submodule "followAlong/jsMastery/3js"]
   path = followAlong/jsMastery/3js
-	url = https://github.com/JavaScript-Mastery-Pro/gsap-cc-starter.git
+	url = https://github.com/JavaScript-Mastery-Pro/gsap-cc-starter
 [submodule "followAlong/kata-machine"]
   path = followAlong/kata-machine
 	url = https://github.com/ThePrimeagen/kata-machine
 [submodule "courses/deepLearingSpecialization"]
   path = courses/deepLearingSpecialization
-  url = https://github.com/amanchadha/coursera-deep-learning-specialization.git
+  url = https://github.com/amanchadha/coursera-deep-learning-specialization
 [submodule "courses/Machine-Learning-Specialization-Coursera"]
 	path = courses/Machine-Learning-Specialization-Coursera
-	url = https://github.com/greyhatguy007/Machine-Learning-Specialization-Coursera.git
+	url = https://github.com/greyhatguy007/Machine-Learning-Specialization-Coursera
 [submodule "followAlong/jsMastery/realtimeapp"]
   path = followAlong/jsMastery/realtimeapp
-  url = https://github.com/tushyagupta81/realtimeNextjsCourse.git
+  url = https://github.com/tushyagupta81/realtimeNextjsCourse
 [submodule "followAlong/next-website-follow-along"]
   path = followAlong/next-website-follow-along
-  url = https://github.com/tushyagupta81/nextSiteFollow.git
+  url = https://github.com/tushyagupta81/nextSiteFollow
 [submodule "hackathons/SFHS codehack"]
   path = hackathons/SFHS codehack
-  url = https://github.com/tushyagupta81/1220_HS_CODEHACK2022.git
+  url = https://github.com/tushyagupta81/1220_HS_CODEHACK2022
 [submodule "projects/SpotifyToYoutube"]
   path = projects/SpotifyToYoutube
-  url = https://github.com/tushyagupta81/SpotifyToYoutube.git
+  url = https://github.com/tushyagupta81/SpotifyToYoutube
 [submodule "projects/bangaloreDashboard/dashboard2"]
   path = projects/bangaloreDashboard/dashboard2
-  url = https://github.com/tushyagupta81/bangaloreDashboard.git
+  url = https://github.com/tushyagupta81/bangaloreDashboard
 [submodule "school/Project"]
   path = school/Project
-  url = https://github.com/tushyagupta81/CS_Project.git
+  url = https://github.com/tushyagupta81/CS_Project
