@@ -1,2 +1,3 @@
-[submodule "./followAlong/jsMastery/3js"]
+[submodule "3js"]
+  path = "./followAlong/jsMastery/3js"
 	url = https://github.com/JavaScript-Mastery-Pro/gsap-cc-starter.git
