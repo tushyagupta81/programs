@@ -4,3 +4,6 @@
 [submodule "followAlong/kata-machine"]
   path = followAlong/kata-machine
 	url = https://github.com/ThePrimeagen/kata-machine
+[submodule "courses/deepLearingSpecialization"]
+  path = courses/deepLearingSpecialization
+  url = https://github.com/amanchadha/coursera-deep-learning-specialization.git
