@@ -1,4 +1,6 @@
 [submodule "followAlong/jsMastery/3js"]
+  path = followAlong/jsMastery/3js
 	url = https://github.com/JavaScript-Mastery-Pro/gsap-cc-starter.git
-[submodule "followAlong/kata-machine/"]
+[submodule "followAlong/kata-machine"]
+  path = followAlong/kata-machine
 	url = https://github.com/ThePrimeagen/kata-machine
