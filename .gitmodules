@@ -1,5 +1,4 @@
-[submodule "3js"]
-  path = "./followAlong/jsMastery/3js"
+[submodule "followAlong/jsMastery/3js"]
 	url = https://github.com/JavaScript-Mastery-Pro/gsap-cc-starter.git
 [submodule "followAlong/kata-machine/"]
-	url = git@github.com:ThePrimeagen/kata-machine.git
+	url = https://github.com/ThePrimeagen/kata-machine
