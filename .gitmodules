@@ -17,7 +17,7 @@
   path = followAlong/next-website-follow-along
   url = https://github.com/tushyagupta81/nextSiteFollow.git
 [submodule "hackathons/SFHS codehack"]
-  path = hackathons/SFHS\ codehack
+  path = hackathons/SFHS codehack
   url = https://github.com/tushyagupta81/1220_HS_CODEHACK2022.git
 [submodule "projects/SpotifyToYoutube"]
   path = projects/SpotifyToYoutube
