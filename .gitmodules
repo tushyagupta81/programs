@@ -1,15 +1,15 @@
 [submodule "followAlong/jsMastery/3js"]
   path = followAlong/jsMastery/3js
-	url = git@github.com:JavaScript-Mastery-Pro/gsap-cc-starter
+	url = https://github.com/JavaScript-Mastery-Pro/gsap-cc-starter
 [submodule "followAlong/kata-machine"]
   path = followAlong/kata-machine
-	url = git@github.com:ThePrimeagen/kata-machine
+	url = https://github.com/ThePrimeagen/kata-machine
 [submodule "courses/deepLearingSpecialization"]
   path = courses/deepLearingSpecialization
-  url = git@github.com:amanchadha/coursera-deep-learning-specialization
+  url = https://github.com/amanchadha/coursera-deep-learning-specialization
 [submodule "courses/Machine-Learning-Specialization-Coursera"]
 	path = courses/Machine-Learning-Specialization-Coursera
-	url = git@github.com:greyhatguy007/Machine-Learning-Specialization-Coursera
+	url = https://github.com/greyhatguy007/Machine-Learning-Specialization-Coursera
 [submodule "followAlong/jsMastery/realtimeapp"]
   path = followAlong/jsMastery/realtimeapp
   url = git@github.com:tushyagupta81/realtimeNextjsCourse
