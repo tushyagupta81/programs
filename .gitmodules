@@ -1,33 +1,33 @@
 [submodule "followAlong/jsMastery/3js"]
   path = followAlong/jsMastery/3js
-	url = https://github.com/JavaScript-Mastery-Pro/gsap-cc-starter
+	url = https://github.com/JavaScript-Mastery-Pro/gsap-cc-starter.git
 [submodule "followAlong/kata-machine"]
   path = followAlong/kata-machine
-	url = https://github.com/ThePrimeagen/kata-machine
+	url = https://github.com/ThePrimeagen/kata-machine.git
 [submodule "courses/deepLearingSpecialization"]
   path = courses/deepLearingSpecialization
-  url = https://github.com/amanchadha/coursera-deep-learning-specialization
+  url = https://github.com/amanchadha/coursera-deep-learning-specialization.git
 [submodule "courses/Machine-Learning-Specialization-Coursera"]
 	path = courses/Machine-Learning-Specialization-Coursera
-	url = https://github.com/greyhatguy007/Machine-Learning-Specialization-Coursera
+	url = https://github.com/greyhatguy007/Machine-Learning-Specialization-Coursera.git
 [submodule "followAlong/jsMastery/realtimeapp"]
   path = followAlong/jsMastery/realtimeapp
-  url = git@github.com:tushyagupta81/realtimeNextjsCourse
+  url = git@github.com:tushyagupta81/realtimeNextjsCourse.git
 [submodule "followAlong/next-website-follow-along"]
   path = followAlong/next-website-follow-along
-  url = git@github.com:tushyagupta81/nextSiteFollow
+  url = git@github.com:tushyagupta81/nextSiteFollow.git
 [submodule "hackathons/SFHS codehack"]
   path = hackathons/SFHS codehack
-  url = git@github.com:tushyagupta81/1220_HS_CODEHACK2022
+  url = git@github.com:tushyagupta81/1220_HS_CODEHACK2022.git
 [submodule "projects/SpotifyToYoutube"]
   path = projects/SpotifyToYoutube
-  url = git@github.com:tushyagupta81/SpotifyToYoutube
+  url = git@github.com:tushyagupta81/SpotifyToYoutube.git
 [submodule "projects/bangaloreDashboard/dashboard2"]
   path = projects/bangaloreDashboard/dashboard2
-  url = git@github.com:tushyagupta81/bangaloreDashboard
+  url = git@github.com:tushyagupta81/bangaloreDashboard.git
 [submodule "school/Project"]
   path = school/Project
-  url = git@github.com:tushyagupta81/CS_Project
+  url = git@github.com:tushyagupta81/CS_Project.git
 [submodule "hackathons/boosthack2/financeApp"]
   path = hackathons/boosthack2/financeApp
-  url = git@github.com:tushyagupta81/boosthack2
+  url = git@github.com:tushyagupta81/boosthack2.git
