@@ -115,18 +115,25 @@ public:
 int main() {
   Arr yay;
   yay.trav();
+  cout << "Inserting 5 at start" << endl;
   yay.insert_at_start(5);
   yay.trav();
+  cout << "Inserting 10 at end" << endl;
   yay.insert_at_end(10);
   yay.trav();
+  cout << "Inserting 20 at index 3" << endl;
   yay.insert_at(20, 3);
   yay.trav();
+  cout << "Deleting element at index 3" << endl;
   yay.delete_at(3);
   yay.trav();
+  cout << "Deleting element at start" << endl;
   yay.delete_at_start();
   yay.trav();
+  cout << "Deleting element at end" << endl;
   yay.delete_at_end();
   yay.trav();
+  cout << "Search for 10" << endl;
   yay.search(10);
   return 0;
 }
