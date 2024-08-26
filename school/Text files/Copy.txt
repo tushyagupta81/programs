@@ -1,0 +1,8 @@
+Hello this is new file
+This has lines starting with A to be printed
+A Apple
+that line has a 'a'
+An ball
+wrong grammar
+My my my
+me me me
