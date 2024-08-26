@@ -22,11 +22,11 @@
 [submodule "projects/SpotifyToYoutube"]
   path = projects/SpotifyToYoutube
   url = git@github.com:tushyagupta81/SpotifyToYoutube.git
-[submodule "projects/bangaloreDashboard/dashboard2"]
-  path = projects/bangaloreDashboard/dashboard2
+[submodule "projects/bangaloreDashboard/bangaloreDashboard"]
+  path = projects/bangaloreDashboard/bangaloreDashboard
   url = git@github.com:tushyagupta81/bangaloreDashboard.git
-[submodule "school/Project"]
-  path = school/Project
+[submodule "school/CS_Project"]
+  path = school/CS_Project
   url = git@github.com:tushyagupta81/CS_Project.git
 [submodule "hackathons/boosthack2/financeApp"]
   path = hackathons/boosthack2/financeApp
