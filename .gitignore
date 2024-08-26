@@ -611,7 +611,6 @@ Cargo.lock
 
 # End of https://www.toptal.com/developers/gitignore/api/sass,data
 
-*.txt
 selenium-server*
 chromedriver*
 *.docx
