@@ -34,3 +34,6 @@
 [submodule "followAlong/pytorch-deep-learning"]
 	path = followAlong/pytorch-deep-learning
 	url = git@github.com:mrdbourke/pytorch-deep-learning.git
+[submodule "projects/todo"]
+	path = projects/todo
+	url = git@github.com:tushyagupta81/todo.git
