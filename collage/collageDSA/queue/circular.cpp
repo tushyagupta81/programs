@@ -23,8 +23,6 @@ public:
     } else if (front != 0, rear == MAX - 1) {
       rear = 0;
       arr[rear] = x;
-    } else {
-      cout << "no cond" << endl;
     }
   }
   void del() {
