@@ -40,3 +40,6 @@
 [submodule "projects/recipeApp"]
 	path = projects/recipeApp
 	url = git@github.com:tushyagupta81/recipeApp.git
+[submodule "projects/bangaloreDashboard/dashboard2"]
+  path = projects/bangaloreDashboard/dashboard2
+  url = git@github.com:Tushya007/bangaloreDashboard.git
