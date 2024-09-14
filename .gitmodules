@@ -37,3 +37,6 @@
 [submodule "projects/todo"]
 	path = projects/todo
 	url = git@github.com:tushyagupta81/todo.git
+[submodule "projects/recipeApp"]
+	path = projects/todo
+	url = git@github.com:tushyagupta81/recipeApp.git
