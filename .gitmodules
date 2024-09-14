@@ -26,7 +26,7 @@
   path = projects/bangaloreDashboard/bangaloreDashboard
   url = git@github.com:tushyagupta81/bangaloreDashboard.git
 [submodule "school/Project"]
-  path = school/CS_Project
+  path = school/Project
   url = git@github.com:tushyagupta81/CS_Project.git
 [submodule "hackathons/boosthack2/financeApp"]
   path = hackathons/boosthack2/financeApp
