@@ -25,7 +25,7 @@
 [submodule "projects/bangaloreDashboard/bangaloreDashboard"]
   path = projects/bangaloreDashboard/bangaloreDashboard
   url = git@github.com:tushyagupta81/bangaloreDashboard.git
-[submodule "school/CS_Project"]
+[submodule "school/Project"]
   path = school/CS_Project
   url = git@github.com:tushyagupta81/CS_Project.git
 [submodule "hackathons/boosthack2/financeApp"]
@@ -38,5 +38,5 @@
 	path = projects/todo
 	url = git@github.com:tushyagupta81/todo.git
 [submodule "projects/recipeApp"]
-	path = projects/todo
+	path = projects/recipeApp
 	url = git@github.com:tushyagupta81/recipeApp.git
