@@ -128,6 +128,7 @@ f1.close()
 
 #8
 import pickle
+
 f = open(r"Z:\Text files\cost.dat","wb")
 for i in range(3):
     pdata = {
@@ -141,6 +142,7 @@ f.close()
 #9
 
 import pickle
+
 f = open(r"Z:\Text files\cost.dat","rb")
 inp = int(input("Find product: "))
 try:
