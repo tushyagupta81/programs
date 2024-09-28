@@ -43,6 +43,6 @@
 [submodule "projects/bangaloreDashboard/dashboard2"]
   path = projects/bangaloreDashboard/dashboard2
   url = git@github.com:tushyagupta81/bangaloreDashboard.git
-[submodule "followAlong/techWithTime/djangoReact"]
+[submodule "followAlong/techWithTime/djangoReactNotes"]
   path = followAlong/techWithTime/djangoReact
   url = git@github.com:tushyagupta81/djangoReactNotes.git
