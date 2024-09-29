@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CYBERSHOP INC</title>
+    <style>
+      /* Style for Layer 1 (Visible initially) */
+      #layer1 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #000;
+        display: block;
+      }
+
+      /* Style for Layer 2 (Initially hidden) */
+      #layer2 {
+        font-size: 18px;
+        color: #333;
+        display: none;
+      }
+
+      /* Style for buttons in Layer 3 */
+      #layer3 {
+        margin-top: 20px;
+      }
+
+      /* Button styling */
+      button {
+        padding: 10px 15px;
+        margin-right: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Layer 1 -->
+    <div id="layer1">CYBERSHOP INC.</div>
+
+    <!-- Layer 2 (Initially hidden) -->
+    <div id="layer2">
+      Services provided by CYBERSHOP INC: <br />
+      - E-commerce solutions <br />
+      - Online shopping platform <br />
+      - Web development services <br />
+      - Technical support
+    </div>
+
+    <!-- Layer 3 (Buttons to toggle layers) -->
+    <div id="layer3">
+      <button onclick="showLayer()">Show</button>
+      <button onclick="resetLayer()">Reset</button>
+    </div>
+
+    <script>
+      // Function to show Layer 2 and hide Layer 1
+      function showLayer() {
+        document.getElementById("layer1").style.display = "none";
+        document.getElementById("layer2").style.display = "block";
+      }
+
+      // Function to reset the view, show Layer 1 and hide Layer 2
+      function resetLayer() {
+        document.getElementById("layer1").style.display = "block";
+        document.getElementById("layer2").style.display = "none";
+      }
+    </script>
+  </body>
+</html>

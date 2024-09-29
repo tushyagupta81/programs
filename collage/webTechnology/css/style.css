@@ -1,0 +1,49 @@
+.Maxx {
+  font-size: 120%;
+  color: "green";
+  font-weight: bold;
+  font-family: cursive;
+}
+
+h1 {
+  max-width: fit-content;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.list-container {
+  max-width: 50%;
+}
+
+.div1 {
+  position: absolute;
+  top: 120px;
+  right: 350px;
+  background-color: blue;
+  width: 150px;
+  height: 150px;
+  color: white;
+  text-align: center;
+}
+
+.div2 {
+  position: absolute;
+  top: 200px;
+  right: 300px;
+  background-color: green;
+  width: 150px;
+  height: 150px;
+  color: white;
+  text-align: center;
+}
+
+.div3 {
+  position: absolute;
+  top: 280px;
+  right: 250px;
+  background-color: goldenrod;
+  width: 150px;
+  height: 150px;
+  color: white;
+  text-align: center;
+}
