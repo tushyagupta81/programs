@@ -3,71 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CYBERSHOP INC</title>
-    <style>
-      /* Style for Layer 1 (Visible initially) */
-      #layer1 {
-        font-size: 24px;
-        font-weight: bold;
-        color: #000;
-        display: block;
-      }
-
-      /* Style for Layer 2 (Initially hidden) */
-      #layer2 {
-        font-size: 18px;
-        color: #333;
-        display: none;
-      }
-
-      /* Style for buttons in Layer 3 */
-      #layer3 {
-        margin-top: 20px;
-      }
-
-      /* Button styling */
-      button {
-        padding: 10px 15px;
-        margin-right: 10px;
-        font-size: 16px;
-        cursor: pointer;
-      }
-
-      button:hover {
-        background-color: #f0f0f0;
-      }
-    </style>
+    <title>Document</title>
+    <link rel="stylesheet" href="styles2.css" />
   </head>
   <body>
-    <!-- Layer 1 -->
-    <div id="layer1">CYBERSHOP INC.</div>
-
-    <!-- Layer 2 (Initially hidden) -->
-    <div id="layer2">
-      Services provided by CYBERSHOP INC: <br />
-      - E-commerce solutions <br />
-      - Online shopping platform <br />
-      - Web development services <br />
-      - Technical support
+    <div class="layer1">
+      <h1>CYBERSHOP INC</h1>
+      <hr />
     </div>
-
-    <!-- Layer 3 (Buttons to toggle layers) -->
-    <div id="layer3">
-      <button onclick="showLayer()">Show</button>
-      <button onclick="resetLayer()">Reset</button>
+    <div class="layer2">
+      <div class="image-div">
+        <div class="list-container">
+          <p>
+            An CYBERSHOP INC, we are proud of our avail our services, and every
+            personal of the incorporation. Here are few the servics we offer
+          </p>
+          <ul>
+            <li>E-Commerce Applications</li>
+            <li>Virtual reality Module Development</li>
+            <li>Cyberengineering</li>
+          </ul>
+          <div>
+            <div class="div1">Virtual Developments</div>
+            <div class="div2">Number one since 1994</div>
+            <div class="div3">The cyber Mall on the WEB</div>
+          </div>
+        </div>
+        <p>Products and services are known virtually all over the world.</p>
+      </div>
     </div>
-
+    <div>
+      <button onclick="show()">Show</button>
+      <button onclick="reset()">Reset</button>
+    </div>
     <script>
-      // Function to show Layer 2 and hide Layer 1
-      function showLayer() {
-        document.getElementById("layer1").style.display = "none";
-        document.getElementById("layer2").style.display = "block";
+      const l1 = document.querySelector(".layer1");
+      const l2 = document.querySelector(".layer2");
+      function show() {
+        // l1.style.visibility = "hidden";
+        l2.style.visibility = "visible";
       }
-
-      // Function to reset the view, show Layer 1 and hide Layer 2
-      function resetLayer() {
-        document.getElementById("layer1").style.display = "block";
-        document.getElementById("layer2").style.display = "none";
+      function reset() {
+        // l1.style.visibility = "visible";
+        l2.style.visibility = "hidden";
       }
     </script>
   </body>
