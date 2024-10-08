@@ -46,3 +46,6 @@
 [submodule "followAlong/techWithTim/djangoReactNotes"]
   path = followAlong/techWithTim/djangoReact
   url = git@github.com:tushyagupta81/djangoReactNotes.git
+[submodule "courses/introduction_to_ml_with_python"]
+	path = courses/introduction_to_ml_with_python
+	url = git@github.com:tushyagupta81/introduction_to_ml_with_python.git
