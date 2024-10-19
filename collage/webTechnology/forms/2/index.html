@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>INFONET SERVICES</h1>
+    <form id="main_form">
+      <input type="text" name="fname" />
+      <label for="fname">First Name</label>
+      <br />
+      <input type="text" name="lname" />
+      <label for="lname">Last Name</label>
+      <br />
+      <input type="email" name="mail" />
+      <label for="mail">Email</label>
+      <br />
+      <input type="text" name="address" />
+      <label for="address">Address</label>
+      <br />
+      <input type="text" name="city" />
+      <label for="city">City</label>
+      <br />
+      <input type="text" name="state" />
+      <label for="state">State</label>
+      <input type="text" name="pcode" />
+      <label for="pcode">Postal Code</label>
+      <input type="text" name="country" />
+      <label for="country">Country</label>
+      <br />
+      <br />
+      <label for="online">Please choose the appropriate option</label>
+      <br />
+      <input type="radio" name="online" id="regular" value="regular" />
+      <label for="regular">I regulary purchase items online</label>
+      <br />
+      <input type="radio" name="online" id="occasion" value="occasion" />
+      <label for="occasion">I have on occasion purchased items online</label>
+      <br />
+      <input type="radio" name="online" id="consider" value="consider" />
+      <label for="consider">
+        i have not purchased items online, but will consider it
+      </label>
+      <br />
+      <input type="radio" name="online" id="local" value="local" />
+      <label for="local">i prefer to shop in local stores</label>
+      <br />
+      <br />
+      <label>I'm interested in(select all that apply):</label>
+      <br />
+      <input type="checkbox" name="hiking" />
+      <label for="hiking">Hiking</label>
+      <br />
+      <input type="checkbox" name="mbiking" />
+      <label for="mbiking">Mountain Biking</label>
+      <br />
+      <input type="checkbox" name="camping" />
+      <label for="camping">Camping</label>
+      <br />
+      <input type="checkbox" name="rclimbing" />
+      <label for="rclimbing">Rock Climbing</label>
+      <br />
+      <input type="checkbox" name="offroad" />
+      <label for="offroad">Off Road 4WD</label>
+      <br />
+      <input type="checkbox" name="skiing" />
+      <label for="skiing">Skiing</label>
+      <br />
+      <br />
+      <label for="learn_from">I learnt about this site from:</label>
+      <br />
+      <select name="learn_from">
+        <option value="friend">Friends</option>
+        <option value="youtube">Youtube</option>
+        <option value="p_ads">Print ads</option>
+      </select>
+      <br />
+      <br />
+      <label for="comments">Comments</label>
+      <br />
+      <textarea name="comments"></textarea>
+      <br />
+      <input type="submit" value="submit" />
+      <input type="reset" value="start over" />
+    </form>
+    <script>
+      document.getElementById("main_form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        console.log(e);
+        for (let i = 0; i < e.target.elements.length - 1; i++) {
+          if (e.target[i].value === "") {
+            alert("Enter all fields");
+            break;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
