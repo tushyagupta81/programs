@@ -72,27 +72,58 @@
       <label for="learn_from">I learnt about this site from:</label>
       <br />
       <select name="learn_from">
+        <option value="p_ads">Print ads</option>
         <option value="friend">Friends</option>
         <option value="youtube">Youtube</option>
-        <option value="p_ads">Print ads</option>
       </select>
       <br />
       <br />
       <label for="comments">Comments</label>
       <br />
-      <textarea name="comments"></textarea>
+      <textarea
+        name="comments"
+        placeholder="Enter your comments here"
+      ></textarea>
+      <br />
       <br />
       <input type="submit" value="submit" />
       <input type="reset" value="start over" />
     </form>
     <script>
-      document.getElementById("main_form").addEventListener("submit", (e) => {
+      const form = document.getElementById("main_form");
+      form.addEventListener("submit", (e) => {
         e.preventDefault();
         console.log(e);
+        let sel_radio;
+        let sel_check;
         for (let i = 0; i < e.target.elements.length - 1; i++) {
-          if (e.target[i].value === "") {
-            alert("Enter all fields");
-            break;
+          if (i <= 7 || i === 19) {
+            if (e.target[i].value === "") {
+              alert("Enter all fields");
+              break;
+            }
+          } else if (i > 7 && i <= 11) {
+            if (e.target[i].checked) {
+              sel_radio = true;
+            }
+          } else if (i > 11) {
+            if (e.target[i].checked) {
+              sel_check = true;
+            }
+          }
+        }
+        if (!(sel_radio && sel_check)) {
+          alert("Enter all fields");
+        }
+      });
+      form.addEventListener("reset", (e) => {
+        for (let i = 0; i < e.target.elements.length - 1; i++) {
+          if (i <= 7 || i === 19) {
+            e.target[i].value = "";
+          } else if (i > 7 && i <= 11) {
+            e.target[i].checked = false;
+          } else if (i > 11) {
+            e.target[i].checked = false;
           }
         }
       });
