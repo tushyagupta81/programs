@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <font color="red" size="+1">
+      <form name="time_form">
+        <center>
+          <br />
+          <br />
+          Current Date & Time :
+          <input name="date" size="19" value="" />
+        </center>
+      </form>
+    </font>
+    <script>
+      function begin(form_name) {
+        console.log(form_name);
+        time_out = window.setTimeout(() => {
+          display_date(form_name);
+        }, 500);
+      }
+      function display_date(form_name) {
+        form_name.date.value = new Date();
+        time_out = window.setTimeout(() => {
+          display_date(form_name);
+        }, 1000);
+      }
+      begin(document.time_form);
+    </script>
+  </body>
+</html>
