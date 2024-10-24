@@ -49,3 +49,6 @@
 [submodule "courses/introduction_to_ml_with_python"]
 	path = courses/introduction_to_ml_with_python
 	url = git@github.com:tushyagupta81/introduction_to_ml_with_python.git
+[submodule "projects/naitikFoodApp"]
+	path = projects/naitikFoodApp
+	url = git@github.com:tushyagupta81/naitikFoodApp.git
