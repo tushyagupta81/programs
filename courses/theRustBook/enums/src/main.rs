@@ -1,12 +1,20 @@
-#[derive(Debug)]
-enum IpAddr {
-    V4(u32, u32, u32, u32),
-    V6(String),
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
 }
-
+fn val_cents(coin: &Coin) -> u32 {
+    match coin {
+        Coin::Penny => 1,
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+    }
+}
 fn main() {
-    let four = IpAddr::V4(127, 0, 0, 1);
-    let six = IpAddr::V6(String::from("::1"));
-    dbg!(&four);
-    dbg!(&six);
+    let p = Coin::Penny;
+    let n = Coin::Nickel;
+    let d = Coin::Dime;
+    println!("{}", val_cents(&p));
+    println!("{}", val_cents(&n));
+    println!("{}", val_cents(&d));
 }
