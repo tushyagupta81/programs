@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Silicon Chip Industries</title>
+    <style>
+      center {
+        width: 50%;
+        margin: auto;
+        border: 2px solid black;
+      }
+      body {
+        color: green;
+        font-size: 12px;
+        font-family: "Times New Roman";
+      }
+      h1 {
+        text-shadow: 4px 4px 4px black;
+        font-size: 32px;
+      }
+      h2 {
+        font-family: "Comic Sans MS";
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <h2>Silicon Chip Industries</h2>
+      <h1>Pen Pal Informations</h1>
+      <form>
+        <label for="username">Enter your username</label>
+        <br />
+        <input type="text" name="username" />
+        <br />
+        <br />
+        <label for="email">Enter your Email</label>
+        <br />
+        <input type="email" name="email" />
+        <br />
+        <br />
+        <label for="sex">Please indicate your sex</label>
+        <br />
+        <input type="radio" name="sex" id="male" value="male" />
+        <label for="male">Male</label>
+        <input type="radio" name="sex" id="female" value="female" />
+        <label for="female">Female</label>
+        <br />
+        <br />
+        <label for="dob">Enter your DOB as DD/MM/YYYY</label>
+        <br />
+        <input type="date" name="dob" />
+        <br />
+        <br />
+        <label for="hobbies"
+          >Tell us about your hobbies and interests in the 'Text-box' bellow<br />We
+          will keep your PenPal info posted for <b>One Year</b> from
+          today</label
+        >
+        <br />
+        <textarea rows="10" cols="100"></textarea>
+        <br />
+        <br />
+        <label for="contact">
+          Can we contact you with information about our products and services
+        </label>
+        <br />
+        <input type="radio" name="contact" id="yes" value="yes" />
+        <label for="yes">Yes</label>
+        <input type="radio" name="contact" id="no" value="no" checked />
+        <label for="no">No, Thanks</label>
+        <br />
+        <br />
+        <input type="submit" value="Submit" />
+        <input type="reset" value="Reset" />
+        <input type="button" value="Abort" />
+      </form>
+      <h4>Thanks for stopping by our website</h4>
+    </center>
+    <script src="index.js"></script>
+  </body>
+</html>
