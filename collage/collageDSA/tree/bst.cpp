@@ -1,4 +1,6 @@
 #include <iostream>
+#include <queue>
+#include <stack>
 using namespace std;
 
 class Node {
@@ -106,6 +108,76 @@ private:
       }
     }
   }
+  void inorder(Node *node) {
+    if (node == NULL) {
+      return;
+    }
+    inorder(node->left);
+    cout << node->val << " ";
+    inorder(node->right);
+  }
+  void DFT(Node *node) {
+    if (node == NULL) {
+      return;
+    }
+    cout << node->val << " ";
+    DFT(node->left);
+    DFT(node->right);
+  }
+  void postorder(Node *node) {
+    if (node == NULL) {
+      return;
+    }
+    postorder(node->left);
+    postorder(node->right);
+    cout << node->val << " ";
+  }
+  void BFT(queue<Node *> q) {
+    if (q.empty()) {
+      cout << endl;
+      return;
+    }
+    Node *n = q.front();
+    cout << n->val << " ";
+    q.pop();
+    if (n->left != NULL) {
+      q.push(n->left);
+    }
+    if (n->right != NULL) {
+      q.push(n->right);
+    }
+    BFT(q);
+  }
+  void BFTiter(queue<Node *> q) {
+    Node *node;
+    while (!q.empty()) {
+      node = q.front();
+      cout << node->val << " ";
+      q.pop();
+      if (node->left != NULL) {
+        q.push(node->left);
+      }
+      if (node->right != NULL) {
+        q.push(node->right);
+      }
+    }
+    cout << endl;
+  }
+  void DFTiter(stack<Node *> s) {
+    Node *node;
+    while (!s.empty()) {
+      node = s.top();
+      cout << node->val << " ";
+      s.pop();
+      if (node->right != NULL) {
+        s.push(node->right);
+      }
+      if (node->left != NULL) {
+        s.push(node->left);
+      }
+    }
+    cout << endl;
+  }
 
 public:
   BST() { root = NULL; }
@@ -117,7 +189,7 @@ public:
     }
     insert(a, root);
   }
-  void dis() { printBT(root); }
+  void dis() { printBT("", root, false); }
   void find_and_del(int a) {
     Node *node = root;
     while (node->val != a) {
@@ -133,6 +205,55 @@ public:
     }
     del_node(node);
   }
+  void find(int a) {
+    Node *node = root;
+    while (node->val != a) {
+      if (node->val > a) {
+        node = node->left;
+      } else {
+        node = node->right;
+      }
+      if (node == NULL) {
+        cout << "Node not found" << endl;
+        return;
+      }
+    }
+    cout << "Node found" << endl;
+  }
+  void inorder() {
+    inorder(root);
+    cout << endl;
+  }
+  void postorder() {
+    postorder(root);
+    cout << endl;
+  }
+  void DFT() {
+    cout << "Recurcive: \n";
+    DFT(root);
+    cout << endl;
+    cout << "Iterative: \n";
+    if (root == NULL) {
+      return;
+    }
+    stack<Node *> s;
+    s.push(root);
+    DFTiter(s);
+  }
+  void BFT() {
+    if (root == NULL) {
+      return;
+    }
+    queue<Node *> q;
+    q.push(root);
+    cout << "Recurcive: \n";
+    BFT(q);
+    cout << endl;
+    cout << "Iterative: \n";
+    queue<Node *> q1;
+    q1.push(root);
+    BFTiter(q1);
+  }
 };
 
 int main() {
@@ -140,13 +261,19 @@ int main() {
   int i, c = 0;
   int a[10] = {3, 5, 1, 2, 6, 4, 8, 7, 9, 0};
   while (true) {
-    cout << "Choose one of the following:\n";
+    cout << "\n\nChoose one of the following:\n";
     cout << "0. Exit\n";
     cout << "1. Insert a element\n";
     cout << "2. Delete a element\n";
     cout << "3. Enter precreated 10 elements\n";
+    cout << "4. Find a element\n";
+    cout << "5. InOrder\n";
+    cout << "6. PreOrder(DFT)\n";
+    cout << "7. PostOrder\n";
+    cout << "8. LevelOrder(BFT)\n";
     cout << "-> ";
     cin >> c;
+    cout << "\n\n";
     switch (c) {
     case 0:
       return 0;
@@ -173,6 +300,23 @@ int main() {
       cout << endl;
       b.dis();
       cout << endl;
+      break;
+    case 4:
+      cout << "\nEnter number to find: ";
+      cin >> i;
+      b.find(i);
+      break;
+    case 5:
+      b.inorder();
+      break;
+    case 6:
+      b.DFT();
+      break;
+    case 7:
+      b.postorder();
+      break;
+    case 8:
+      b.BFT();
       break;
     default:
       continue;
