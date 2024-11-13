@@ -223,10 +223,14 @@ public:
   void inorder() {
     inorder(root);
     cout << endl;
+    cout << endl;
+    dis();
   }
   void postorder() {
     postorder(root);
     cout << endl;
+    cout << endl;
+    dis();
   }
   void DFT() {
     cout << "Recurcive: \n";
@@ -239,6 +243,8 @@ public:
     stack<Node *> s;
     s.push(root);
     DFTiter(s);
+    cout << endl;
+    dis();
   }
   void BFT() {
     if (root == NULL) {
@@ -248,11 +254,12 @@ public:
     q.push(root);
     cout << "Recurcive: \n";
     BFT(q);
-    cout << endl;
     cout << "Iterative: \n";
     queue<Node *> q1;
     q1.push(root);
     BFTiter(q1);
+    cout << endl;
+    dis();
   }
 };
 
