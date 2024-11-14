@@ -116,14 +116,6 @@ private:
     cout << node->val << " ";
     inorder(node->right);
   }
-  void DFT(Node *node) {
-    if (node == NULL) {
-      return;
-    }
-    cout << node->val << " ";
-    DFT(node->left);
-    DFT(node->right);
-  }
   void postorder(Node *node) {
     if (node == NULL) {
       return;
@@ -162,6 +154,14 @@ private:
       }
     }
     cout << endl;
+  }
+  void DFT(Node *node) {
+    if (node == NULL) {
+      return;
+    }
+    cout << node->val << " ";
+    DFT(node->left);
+    DFT(node->right);
   }
   void DFTiter(stack<Node *> s) {
     Node *node;
