@@ -8,22 +8,24 @@ const Card = () => {
       </div>
       <div className="flex flex-col">
         <table className=" rounded-md">
-          <tr>
-            <td className="border border-black">Sqarue foot</td>
-            <td className="border border-black">1000</td>
-          </tr>
-          <tr>
-            <td className="border border-black">BHK</td>
-            <td className="border border-black">3</td>
-          </tr>
-          <tr>
-            <td className="border border-black">Bedrooms</td>
-            <td className="border border-black">3</td>
-          </tr>
-          <tr>
-            <td className="border border-black">Kitchens</td>
-            <td className="border border-black">1</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td className="border border-black">Sqarue foot</td>
+              <td className="border border-black">1000</td>
+            </tr>
+            <tr>
+              <td className="border border-black">BHK</td>
+              <td className="border border-black">3</td>
+            </tr>
+            <tr>
+              <td className="border border-black">Bedrooms</td>
+              <td className="border border-black">3</td>
+            </tr>
+            <tr>
+              <td className="border border-black">Kitchens</td>
+              <td className="border border-black">1</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>
