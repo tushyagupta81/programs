@@ -23,7 +23,6 @@ const My = () => {
         navigate("/logout");
       }
       setData(obj.data);
-      console.log(obj);
     };
     getData();
   }, [navigate]);

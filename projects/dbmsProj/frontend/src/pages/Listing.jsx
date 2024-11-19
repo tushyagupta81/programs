@@ -22,7 +22,6 @@ const Listing = () => {
       }),
     });
     const obj = await res.json();
-    console.log(obj);
     if (obj.status === 201) {
       navigate("/");
     } else if (obj.status === 401) {
