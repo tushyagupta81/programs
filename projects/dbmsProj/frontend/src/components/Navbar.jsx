@@ -7,7 +7,7 @@ const Navbar = () => {
       <div className="flex gap-4">
         {localStorage.getItem("token") ? (
           <>
-            {localStorage.getItem("role") === "PRESIDENT" && (
+            {localStorage.getItem("role") === "agent" && (
               <Link to="/create">Create listing</Link>
             )}
             <Link to="/logout">Logout</Link>
