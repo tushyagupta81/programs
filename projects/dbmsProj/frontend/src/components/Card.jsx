@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 const Card = ({ info }) => {
   const navigate = useNavigate();
-  console.log(info);
   return (
     <div
       className="rounded overflow-hidden border border-black p-2 shadow-xl"
@@ -12,7 +11,7 @@ const Card = ({ info }) => {
       <div className="flex flex-col mb-4">
         <span className="font-bold text-2xl">{info.TITLE}</span>
         <span className="text-gray-600 text-sm">By {info.USER_NAME}</span>
-        <span className="text-xl">{info.PRICE}</span>
+        <span className="text-xl">₹{info.PRICE}</span>
       </div>
       <div className="flex flex-col">
         <table className=" rounded-md">
@@ -36,6 +35,11 @@ const Card = ({ info }) => {
           </tbody>
         </table>
       </div>
+      <span
+        className={`border border-black rounded w-min px-2 mt-2 ${info.AVAILABILITY_STATUS === "Sold" ? "bg-red-300" : "bg-gray-200"}`}
+      >
+        {info.AVAILABILITY_STATUS}
+      </span>
     </div>
   );
 };

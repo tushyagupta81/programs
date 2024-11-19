@@ -8,7 +8,6 @@ const Login = () => {
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
-    console.log(email, password);
     const res = await fetch(
       "https://apex.oracle.com/pls/apex/tushya/proj/login/",
       {
@@ -27,7 +26,7 @@ const Login = () => {
       const decoded = jwtDecode(obj.data);
       localStorage.setItem("token", obj.data);
       localStorage.setItem("role", decoded.role);
-      console.log(decoded);
+      localStorage.setItem("id", decoded.id);
       navigate("/");
     } else if (obj.status === 404) {
       e.target[1].value = "";

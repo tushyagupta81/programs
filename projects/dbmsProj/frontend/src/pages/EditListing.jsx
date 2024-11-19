@@ -1,8 +1,31 @@
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
-const Create = () => {
+const EditListing = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+      const url = `https://apex.oracle.com/pls/apex/tushya/proj/editlisting/${id}?token_=${localStorage.getItem("token")}`;
+      const res = await fetch(url, {
+        method: "GET",
+      });
+      const obj = await res.json();
+      if (obj.status === 401) {
+        navigate("/logout");
+      } else if (obj.status === 403) {
+        alert("You can only edit your own listings");
+        navigate("/");
+      }
+      setData(obj.data[0]);
+    };
+    getData();
+  }, [id, navigate]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const title = e.target[0].value;
@@ -15,31 +38,32 @@ const Create = () => {
     const kitchen = e.target[7].value;
     const bedrooms = e.target[8].value;
     const price = e.target[9].value;
-    const res = await fetch(
-      "https://apex.oracle.com/pls/apex/tushya/proj/create/",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          token_: localStorage.getItem("token"),
-          title_: title,
-          address_: address,
-          city_: city,
-          state_: state,
-          property_type_: property_type,
-          price_: price,
-          size_of_property_: size_of_property,
-          bhk_: bhk,
-          bedrooms_: bedrooms,
-          kitchen_: kitchen,
-        }),
+    const availability_status = e.target[10].value;
+    const url = `https://apex.oracle.com/pls/apex/tushya/proj/editlisting/${id}`;
+    const res = await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify({
+        token_: localStorage.getItem("token"),
+        title_: title,
+        property_id_: data.PROPERTY_ID,
+        address_: address,
+        city_: city,
+        state_: state,
+        property_type_: property_type,
+        price_: price,
+        size_of_property_: size_of_property,
+        bhk_: bhk,
+        bedrooms_: bedrooms,
+        kitchen_: kitchen,
+        availability_status_: availability_status,
+      }),
+    });
     const obj = await res.json();
-    if (obj.status === 201) {
-      navigate("/");
+    if (obj.status === 203) {
+      navigate(`/listing/${id}`);
     } else if (obj.status === 409) {
       e.target[1].value = "";
       e.target[2].value = "";
@@ -48,24 +72,29 @@ const Create = () => {
       alert("Server error please try again");
     }
   };
+
   return (
     <>
       <Navbar />
       <div className="w-full h-screen flex items-center justify-center">
         <div className="border border-black shadow-xl rounded-md w-96 py-4">
-          <h1 className="w-min mx-auto font-bold text-2xl">Create Listing</h1>
+          <h1 className="text-center mx-auto font-bold text-2xl">
+            {"Edit Listing"}
+          </h1>
           <form className="flex flex-col gap-2 px-4" onSubmit={handleSubmit}>
             <label htmlFor="title">Title</label>
             <input
               type="text"
               name="title"
               className="border border-black rounded-md h-8 pl-2"
+              defaultValue={data.TITLE}
               required
             />
             <label htmlFor="state">State</label>
             <input
               type="text"
               name="state"
+              defaultValue={data.STATE}
               className="border border-black rounded-md h-8 pl-2"
               required
             />
@@ -73,6 +102,7 @@ const Create = () => {
             <input
               type="text"
               name="city"
+              defaultValue={data.CITY}
               className="border border-black rounded-md h-8 pl-2"
               required
             />
@@ -80,6 +110,7 @@ const Create = () => {
             <input
               type="text"
               name="Address"
+              defaultValue={data.ADDRESS}
               className="border border-black rounded-md h-8 pl-2"
               required
             />
@@ -97,6 +128,7 @@ const Create = () => {
             <input
               type="number"
               name="size"
+              defaultValue={data.SIZE_OF_PROPERTY}
               className="border border-black rounded-md h-8 px-2"
               required
             />
@@ -104,6 +136,7 @@ const Create = () => {
             <input
               type="number"
               name="bhk"
+              defaultValue={data.BHK}
               className="border border-black rounded-md h-8 px-2"
               required
             />
@@ -111,6 +144,7 @@ const Create = () => {
             <input
               type="number"
               name="kitchen"
+              defaultValue={data.KITCHEN}
               className="border border-black rounded-md h-8 px-2"
               required
             />
@@ -118,15 +152,28 @@ const Create = () => {
             <input
               type="number"
               name="bedroom"
+              defaultValue={data.BEDROOMS}
               className="border border-black rounded-md h-8 px-2"
               required
             />
             <label htmlFor="price">Price</label>
             <input
               type="number"
+              name="price"
               className="border border-black rounded-md h-8 px-2"
+              defaultValue={data.PRICE}
               required
             />
+            <label htmlFor="availability">Availability</label>
+            <select
+              name="availability"
+              id="availablility"
+              className="border blorder-black h-8 rounded-md pl-2"
+            >
+              <option value="Available">Available</option>
+              <option value="Sold">Sold</option>
+              <option value="Under Contract">Under Contract</option>
+            </select>
             <input
               type="submit"
               value="Submit"
@@ -139,4 +186,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default EditListing;

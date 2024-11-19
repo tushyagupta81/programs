@@ -10,7 +10,6 @@ const Signup = () => {
     const password = e.target[2].value;
     const phone = e.target[3].value;
     const role = e.target[4].value;
-    console.log(username, email, password, phone, role);
     const res = await fetch(
       "https://apex.oracle.com/pls/apex/tushya/proj/signup/",
       {
@@ -28,7 +27,6 @@ const Signup = () => {
       },
     );
     const obj = await res.json();
-    console.log(obj);
     if (obj.status === 201) {
       navigate("/login");
     } else if (obj.status === 409) {
