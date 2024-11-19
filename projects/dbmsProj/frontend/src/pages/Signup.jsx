@@ -1,37 +1,42 @@
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(e);
     const username = e.target[0].value;
-    const password = e.target[1].value;
-    const phone = e.target[2].value;
-    const role = e.target[3].value;
-    console.log(username, password, phone, role);
+    const email = e.target[1].value;
+    const password = e.target[2].value;
+    const phone = e.target[3].value;
+    const role = e.target[4].value;
+    console.log(username, email, password, phone, role);
     const res = await fetch(
-      "https://apex.oracle.com/pls/apex/tushya/proj/login/",
+      "https://apex.oracle.com/pls/apex/tushya/proj/signup/",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userName: uname,
+          userName: username,
           pwd: password,
+          email_: email,
+          phone_: phone,
+          role_: role,
         }),
       },
     );
     const obj = await res.json();
-    if (obj.status === 200) {
-      const decoded = jwtDecode(obj.data);
-      localStorage.setItem("token", obj.data);
-      localStorage.setItem("role", decoded.job);
-      console.log(decoded);
-      navigate("/");
-    } else {
+    console.log(obj);
+    if (obj.status === 201) {
+      navigate("/login");
+    } else if (obj.status === 409) {
       e.target[1].value = "";
-      alert("Username or password does not exist");
+      e.target[2].value = "";
+      alert("User already exists");
+    } else if (obj.status === 500) {
+      alert("Server error please try again");
     }
   };
   return (
@@ -45,6 +50,13 @@ const Signup = () => {
             <input
               type="text"
               name="username"
+              className="border border-black rounded-md h-8 pl-2"
+              required
+            />
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
               className="border border-black rounded-md h-8 pl-2"
               required
             />

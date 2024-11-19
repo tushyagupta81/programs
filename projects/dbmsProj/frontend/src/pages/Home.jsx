@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
+  const [data, setData] = useState([]);
   const [price, setPrice] = useState(0);
   const [title, setTitle] = useState("");
 
@@ -27,7 +28,7 @@ const Home = () => {
       if (obj.status === 401) {
         navigate("/logout");
       }
-      console.log(obj);
+      setData(obj.data);
     };
     getData();
   }, 1000);
@@ -44,9 +45,10 @@ const Home = () => {
       });
       const obj = await res.json();
       if (obj.status === 401) {
-        navigate("/login");
+        navigate("/logout");
       }
       console.log(obj);
+      setData(obj.data);
     };
     getData();
   }, [navigate]);
@@ -84,17 +86,9 @@ const Home = () => {
         </span>
       </div>
       <div className="grid xl:grid-cols-4 md:grid-cols-2 gap-10 w-[80%] mx-auto">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {data?.map((card_data) => (
+          <Card info={card_data} key={card_data.title} />
+        ))}
       </div>
     </>
   );
