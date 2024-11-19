@@ -20,7 +20,6 @@ const Home = () => {
       if (title.length > 0) {
         url += `&title=${title}`;
       }
-      console.log(url);
       const res = await fetch(url, {
         method: "GET",
       });
@@ -47,7 +46,6 @@ const Home = () => {
       if (obj.status === 401) {
         navigate("/logout");
       }
-      console.log(obj);
       setData(obj.data);
     };
     getData();

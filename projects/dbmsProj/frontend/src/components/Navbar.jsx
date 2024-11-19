@@ -8,7 +8,10 @@ const Navbar = () => {
         {localStorage.getItem("token") ? (
           <>
             {localStorage.getItem("role") === "agent" && (
-              <Link to="/create">Create listing</Link>
+              <>
+                <Link to="/create">Create listing</Link>
+                <Link to="/my">View My Listings</Link>
+              </>
             )}
             <Link to="/logout">Logout</Link>
           </>
