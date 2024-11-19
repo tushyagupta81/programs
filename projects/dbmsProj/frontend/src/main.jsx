@@ -10,6 +10,8 @@ import Signup from "./pages/Signup.jsx";
 import Listing from "./pages/Listing.jsx";
 import EditListing from "./pages/EditListing.jsx";
 import My from "./pages/My.jsx";
+import Trans from "./pages/Trans.jsx";
+import OneTrans from "./pages/OneTrans.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -18,6 +20,8 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/transactions" element={<Trans />} />
+        <Route path="/transaction/:id" element={<OneTrans />} />
         <Route path="/listing/:id" element={<Listing />} />
         <Route path="/editlisting/:id" element={<EditListing />} />
         <Route path="/logout" element={<Logout />} />
