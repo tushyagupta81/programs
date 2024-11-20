@@ -5,7 +5,7 @@ const TransCard = ({ info }) => {
   const navigate = useNavigate();
   return (
     <div
-      className="rounded overflow-hidden border border-black p-2 shadow-xl"
+      className="rounded overflow-hidden border border-black p-2 shadow-xl hover:cursor-pointer"
       onMouseDown={() => navigate(`/transaction/${info.TRANSACTION_ID}`)}
     >
       <div className="flex flex-col mb-4">
@@ -13,7 +13,7 @@ const TransCard = ({ info }) => {
           Transaction id: {info.TRANSACTION_ID}
         </span>
         <span className="text-gray-600 text-sm">
-          From {info.BUYER_ID} to {info.SELLER_ID}
+          From {info.BUYER_NAME} to {info.SELLER_NAME}
         </span>
         <span className="text-xl">₹{info.TRANSACTION_AMOUNT}</span>
         <span>

@@ -5,7 +5,7 @@ const Card = ({ info }) => {
   const navigate = useNavigate();
   return (
     <div
-      className="rounded overflow-hidden border border-black p-2 shadow-xl"
+      className="rounded overflow-hidden border border-black p-2 shadow-xl hover:cursor-pointer"
       onMouseUp={() => navigate(`/listing/${info.PROPERTY_ID}`)}
     >
       <div className="flex flex-col mb-4">
