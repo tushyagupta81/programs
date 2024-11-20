@@ -30,7 +30,7 @@ const Trans = () => {
             <span className="font-bold text-xl">Sold</span>
             <div className="grid xl:grid-cols-4 md:grid-cols-2 gap-10 mt-4">
               {data?.sold.map((card_data) => (
-                <TransCard info={card_data} key={card_data.transaction_id} />
+                <TransCard info={card_data} key={card_data.TRANSACTION_ID} />
               ))}
             </div>
           </div>
@@ -39,7 +39,7 @@ const Trans = () => {
           <span className="font-bold text-xl">Bought</span>
           <div className="grid xl:grid-cols-4 md:grid-cols-2 gap-10 mt-4">
             {data?.bought.map((card_data) => (
-              <TransCard info={card_data} key={card_data.transaction_id} />
+              <TransCard info={card_data} key={card_data.TRANSACTION_ID} />
             ))}
           </div>
         </div>

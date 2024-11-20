@@ -85,7 +85,7 @@ const Home = () => {
       </div>
       <div className="grid xl:grid-cols-4 md:grid-cols-2 gap-10 w-[80%] mx-auto">
         {data?.map((card_data) => (
-          <Card info={card_data} key={card_data.title} />
+          <Card info={card_data} key={card_data.PROPERTY_ID} />
         ))}
       </div>
     </>
