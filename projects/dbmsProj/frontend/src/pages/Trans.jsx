@@ -25,14 +25,16 @@ const Trans = () => {
     <>
       <Navbar />
       <div className="w-[80%] mx-auto mt-4">
-        <div className="my-6">
-          <span className="font-bold text-xl">Sold</span>
-          <div className="grid xl:grid-cols-4 md:grid-cols-2 gap-10 mt-4">
-            {data?.sold.map((card_data) => (
-              <TransCard info={card_data} key={card_data.transaction_id} />
-            ))}
+        {localStorage.getItem("role") === "agent" && (
+          <div className="my-6">
+            <span className="font-bold text-xl">Sold</span>
+            <div className="grid xl:grid-cols-4 md:grid-cols-2 gap-10 mt-4">
+              {data?.sold.map((card_data) => (
+                <TransCard info={card_data} key={card_data.transaction_id} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
         <div>
           <span className="font-bold text-xl">Bought</span>
           <div className="grid xl:grid-cols-4 md:grid-cols-2 gap-10 mt-4">

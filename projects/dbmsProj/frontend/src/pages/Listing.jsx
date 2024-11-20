@@ -9,6 +9,23 @@ const Listing = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
 
+  const handleDelete = async () => {
+    const url = `https://apex.oracle.com/pls/apex/tushya/proj/delete/${id}?token_=${localStorage.getItem("token")}`;
+    const res = await fetch(url, {
+      method: "DELETE",
+    });
+    const obj = await res.json();
+    if (obj.status === 200) {
+      navigate("/");
+    } else if (obj.status === 401) {
+      navigate("/logout");
+    } else if (obj.status === 409) {
+      alert("Cannot delete property under sale");
+    } else if (obj.status === 403) {
+      alert("You can only delete your own listing");
+    }
+  };
+
   const handleBuy = async () => {
     const url = `https://apex.oracle.com/pls/apex/tushya/proj/buy/${id}`;
     const res = await fetch(url, {
@@ -117,13 +134,24 @@ const Listing = () => {
         <div className="flex flex-row pt-4 gap-4">
           {Number.parseInt(localStorage.getItem("id")) ===
           Number.parseInt(data.USER_ID) ? (
-            <button
-              type="button"
-              className="border border-blue-500 bg-blue-300 rounded-xl py-1 px-2"
-              onMouseUp={() => navigate(`/editlisting/${id}`)}
-            >
-              Edit
-            </button>
+            <>
+              <button
+                type="button"
+                className="border border-blue-500 bg-blue-300 rounded-xl py-1 px-2"
+                onMouseUp={() => navigate(`/editlisting/${id}`)}
+              >
+                Edit
+              </button>
+              {data.AVAILABILITY_STATUS === "Available" && (
+                <button
+                  type="button"
+                  className="border border-red-500 bg-red-300 rounded-xl py-1 px-2"
+                  onMouseUp={handleDelete}
+                >
+                  Delete
+                </button>
+              )}
+            </>
           ) : (
             <></>
           )}
