@@ -56,10 +56,11 @@ const OneTrans = () => {
         <span className="text-gray-600 text-sm">
           From {data.BUYER_NAME} to {data.SELLER_NAME}
         </span>
+        <hr className="py-2" />
         <span className="text-xl">₹{data.TRANSACTION_AMOUNT}</span>
         <span>
           {data.TRANSACTION_DATE?.split("T").map(
-            (word) => `${word.split("Z")} `,
+            (word) => `${word.split("Z")[0]} `,
           )}
         </span>
         <span>{data.PAYMENT_METHOD}</span>
