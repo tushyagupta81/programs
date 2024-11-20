@@ -46,6 +46,8 @@ const Create = () => {
       alert("User already exists");
     } else if (obj.status === 500) {
       alert("Server error please try again");
+    } else if (obj.status === 401) {
+      navigate("/logout");
     }
   };
   return (
