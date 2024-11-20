@@ -12,6 +12,7 @@ const Card = ({ info }) => {
         <span className="font-bold text-2xl">{info.TITLE}</span>
         <span className="text-gray-600 text-sm">By {info.USER_NAME}</span>
         <span className="text-xl">₹{info.PRICE}</span>
+        <span className="text-md text-gray-600">{info.PROPERTY_TYPE}</span>
       </div>
       <div className="flex flex-col">
         <table className=" rounded-md">
