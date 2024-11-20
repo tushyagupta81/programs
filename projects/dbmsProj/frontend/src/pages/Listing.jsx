@@ -26,7 +26,9 @@ const Listing = () => {
     }
   };
 
-  const handleBuy = async () => {
+  const handleBuy = async (e) => {
+    e.preventDefault();
+    const payment_method = e.target[0].value;
     const url = `https://apex.oracle.com/pls/apex/tushya/proj/buy/${id}`;
     const res = await fetch(url, {
       method: "POST",
@@ -35,7 +37,7 @@ const Listing = () => {
       },
       body: JSON.stringify({
         token_: localStorage.getItem("token"),
-        payment_method_: "Cash",
+        payment_method_: payment_method,
       }),
     });
     const obj = await res.json();
@@ -160,13 +162,23 @@ const Listing = () => {
             Number.parseInt(localStorage.getItem("id")) ===
             Number.parseInt(data.USER_ID)
           ) ? (
-            <button
-              type="button"
-              className="border border-green-500 bg-green-300 rounded-xl py-1 px-2"
-              onMouseUp={handleBuy}
-            >
-              Buy
-            </button>
+            <form onSubmit={handleBuy} className="flex flex-row gap-4">
+              <select
+                name="payment_method"
+                id="payment_method"
+                className="rounded-md border border-black px-2 bg-transparent"
+              >
+                <option value="Cash">Cash</option>
+                <option value="Credit">Credit</option>
+                <option value="Debit">Debit</option>
+                <option value="Online">Online</option>
+              </select>
+              <input
+                type="submit"
+                className="border border-green-500 bg-green-300 rounded-xl py-1 px-2"
+                value="Buy"
+              />
+            </form>
           ) : (
             <></>
           )}
