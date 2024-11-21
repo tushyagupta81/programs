@@ -42,20 +42,22 @@ const Signup = () => {
       <Navbar />
       <div className="w-full h-screen flex items-center justify-center">
         <div className="border border-black shadow-xl rounded-md w-96 py-4">
-          <h1 className="w-min mx-auto font-bold text-2xl">Signup</h1>
+          <h1 className="w-min mx-auto font-bold text-2xl mb-8">Signup</h1>
           <form className="flex flex-col gap-2 px-4" onSubmit={handleSubmit}>
             <label htmlFor="username">Username</label>
             <input
               type="text"
               name="username"
-              className="border border-black rounded-md h-8 pl-2"
+              placeholder="Enter your Username"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
-              className="border border-black rounded-md h-8 pl-2"
+              placeholder="Enter your Email"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="password">Password</label>
@@ -63,7 +65,8 @@ const Signup = () => {
               type="password"
               name="password"
               minLength={8}
-              className="border border-black rounded-md h-8 pl-2"
+              placeholder="Enter your Password"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="phone">Phone number</label>
@@ -71,14 +74,15 @@ const Signup = () => {
               type="number"
               min={1000000000}
               max={9999999999}
-              className="border border-black rounded-md h-8 px-2"
+              placeholder="Enter your Phone number"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="role">Role</label>
             <select
               name="role"
               id="role"
-              className="border blorder-black h-8 rounded-md pl-2"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
             >
               <option value="client">Client</option>
               <option value="agent">Agent</option>
@@ -86,7 +90,7 @@ const Signup = () => {
             <input
               type="submit"
               value="Submit"
-              className="border border-black rounded-full w-min px-4 py-2 mx-auto bg-green-300 mt-2"
+              className="border border-black rounded-full w-32 px-4 py-2 mx-auto bg-green-300 mt-8 hover:cursor-pointer"
             />
           </form>
         </div>

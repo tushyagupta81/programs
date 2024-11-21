@@ -79,8 +79,8 @@ const EditListing = () => {
     <>
       <Navbar />
       <div className="w-full h-screen flex items-center justify-center">
-        <div className="border border-black shadow-xl rounded-md w-96 py-4">
-          <h1 className="text-center mx-auto font-bold text-2xl">
+        <div className="border border-black shadow-xl rounded-md w-96 py-4 mt-16">
+          <h1 className="text-center mx-auto font-bold text-2xl mb-8">
             {"Edit Listing"}
           </h1>
           <form className="flex flex-col gap-2 px-4" onSubmit={handleSubmit}>
@@ -88,7 +88,7 @@ const EditListing = () => {
             <input
               type="text"
               name="title"
-              className="border border-black rounded-md h-8 pl-2"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               defaultValue={data.TITLE}
               required
             />
@@ -97,7 +97,7 @@ const EditListing = () => {
               type="text"
               name="state"
               defaultValue={data.STATE}
-              className="border border-black rounded-md h-8 pl-2"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="city">City</label>
@@ -105,7 +105,7 @@ const EditListing = () => {
               type="text"
               name="city"
               defaultValue={data.CITY}
-              className="border border-black rounded-md h-8 pl-2"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="address">Address</label>
@@ -113,14 +113,14 @@ const EditListing = () => {
               type="text"
               name="Address"
               defaultValue={data.ADDRESS}
-              className="border border-black rounded-md h-8 pl-2"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="type">Type</label>
             <select
               name="type"
               id="type"
-              className="border blorder-black h-8 rounded-md pl-2"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
             >
               <option value="Apartment">Apartment</option>
               <option value="Villa">Villa</option>
@@ -131,7 +131,7 @@ const EditListing = () => {
               type="number"
               name="size"
               defaultValue={data.SIZE_OF_PROPERTY}
-              className="border border-black rounded-md h-8 px-2"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="bhk">BHK</label>
@@ -139,7 +139,7 @@ const EditListing = () => {
               type="number"
               name="bhk"
               defaultValue={data.BHK}
-              className="border border-black rounded-md h-8 px-2"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="kitchen">Kitchen</label>
@@ -147,7 +147,7 @@ const EditListing = () => {
               type="number"
               name="kitchen"
               defaultValue={data.KITCHEN}
-              className="border border-black rounded-md h-8 px-2"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="bedroom">Bedroom</label>
@@ -155,14 +155,14 @@ const EditListing = () => {
               type="number"
               name="bedroom"
               defaultValue={data.BEDROOMS}
-              className="border border-black rounded-md h-8 px-2"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="price">Price</label>
             <input
               type="number"
               name="price"
-              className="border border-black rounded-md h-8 px-2"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               defaultValue={data.PRICE}
               required
             />
@@ -170,7 +170,7 @@ const EditListing = () => {
             <select
               name="availability"
               id="availablility"
-              className="border blorder-black h-8 rounded-md pl-2"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
             >
               <option value="Available">Available</option>
               <option value="Sold">Sold</option>
@@ -179,7 +179,7 @@ const EditListing = () => {
             <input
               type="submit"
               value="Submit"
-              className="border border-black rounded-full w-min px-4 py-2 mx-auto bg-green-300 mt-2"
+              className="border border-black rounded-full w-32 px-4 py-2 mx-auto bg-green-300 mt-8 hover:cursor-pointer"
             />
           </form>
         </div>

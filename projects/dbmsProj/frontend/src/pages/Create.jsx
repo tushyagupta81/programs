@@ -54,42 +54,48 @@ const Create = () => {
     <>
       <Navbar />
       <div className="w-full h-screen flex items-center justify-center">
-        <div className="border border-black shadow-xl rounded-md w-96 py-4">
-          <h1 className="w-min mx-auto font-bold text-2xl">Create Listing</h1>
+        <div className="border border-black shadow-xl rounded-md w-96 py-4 mt-16">
+          <h1 className="mx-auto font-bold text-2xl text-center mb-8">
+            Create Listing
+          </h1>
           <form className="flex flex-col gap-2 px-4" onSubmit={handleSubmit}>
             <label htmlFor="title">Title</label>
             <input
               type="text"
               name="title"
-              className="border border-black rounded-md h-8 pl-2"
+              placeholder="Enter property title"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="state">State</label>
             <input
               type="text"
               name="state"
-              className="border border-black rounded-md h-8 pl-2"
+              placeholder="Enter state of property"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="city">City</label>
             <input
               type="text"
               name="city"
-              className="border border-black rounded-md h-8 pl-2"
+              placeholder="Enter city of property"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="address">Address</label>
             <input
               type="text"
               name="Address"
-              className="border border-black rounded-md h-8 pl-2"
+              placeholder="Enter address of property"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="type">Type</label>
             <select
               name="type"
               id="type"
-              className="border blorder-black h-8 rounded-md pl-2"
+              className="border-b-2 border-gray-400 bg-white h-8"
             >
               <option value="Apartment">Apartment</option>
               <option value="Villa">Villa</option>
@@ -99,40 +105,46 @@ const Create = () => {
             <input
               type="number"
               name="size"
-              className="border border-black rounded-md h-8 px-2"
+              placeholder="Enter size of property"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="bhk">BHK</label>
             <input
               type="number"
               name="bhk"
-              className="border border-black rounded-md h-8 px-2"
+              placeholder="Enter BHK of property"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="kitchen">Kitchen</label>
             <input
               type="number"
               name="kitchen"
-              className="border border-black rounded-md h-8 px-2"
+              placeholder="Enter number of kitchens of property"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="bedroom">Bedroom</label>
             <input
               type="number"
               name="bedroom"
-              className="border border-black rounded-md h-8 px-2"
+              placeholder="Enter number of bedrooms of property"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <label htmlFor="price">Price</label>
             <input
               type="number"
-              className="border border-black rounded-md h-8 px-2"
+              name="price"
+              placeholder="Enter price of property"
+              className="border-b-2 border-gray-400 bg-white pl-2 h-8"
               required
             />
             <input
               type="submit"
               value="Submit"
-              className="border border-black rounded-full w-min px-4 py-2 mx-auto bg-green-300 mt-2"
+              className="border border-black rounded-full w-32 px-4 py-2 mx-auto bg-green-300 mt-8 hover:cursor-pointer"
             />
           </form>
         </div>
