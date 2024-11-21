@@ -8,8 +8,8 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
-  const [price, setPrice] = useState(0);
-  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState();
+  const [city, setCity] = useState("");
 
   const handleChange = useDebouncedCallback(async () => {
     const getData = async () => {
@@ -17,8 +17,8 @@ const Home = () => {
       if (price > 3) {
         url += `&price=${price}`;
       }
-      if (title.length > 0) {
-        url += `&title=${title}`;
+      if (city.length > 0) {
+        url += `&city=${city}`;
       }
       const res = await fetch(url, {
         method: "GET",
@@ -53,15 +53,13 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="w-[80%] mx-auto flex flex-col py-4 gap-2">
+      <div className="w-[80%] mx-auto flex flex-row py-4 gap-4 my-4">
         <span className="flex flex-row gap-2">
-          <label htmlFor="Price" className="text-xl">
-            Price(max):
-          </label>
           <input
             type="number"
-            className="border border-black rounded-md"
+            className="border-b-2 border-gray-400 bg-white pl-2 h-8 w-64"
             value={price}
+            placeholder="Price(max)"
             onChange={(e) => {
               setPrice(e.target.value);
               handleChange();
@@ -69,15 +67,14 @@ const Home = () => {
           />
         </span>
         <span className="flex flex-row gap-2">
-          <label htmlFor="title" className="text-xl">
-            Title:
-          </label>
           <input
             type="text"
-            className="border border-black rounded-md"
-            value={title}
+            className="border-b-2 border-gray-400 bg-white pl-2 h-8 w-64"
+            name="city"
+            placeholder="City"
+            value={city}
             onChange={(e) => {
-              setTitle(e.target.value);
+              setCity(e.target.value);
               handleChange();
             }}
           />
