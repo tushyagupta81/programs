@@ -52,3 +52,6 @@
 [submodule "projects/naitikFoodApp"]
 	path = projects/naitikFoodApp
 	url = git@github.com:tushyagupta81/naitikFoodApp.git
+[submodule "hackathons/hackpec"]
+	path = hackathons/hackpec
+	url = git@github.com:tushyagupta81/intelRead.git
