@@ -55,3 +55,6 @@
 [submodule "hackathons/hackpec"]
 	path = hackathons/hackpec
 	url = git@github.com:tushyagupta81/intelRead.git
+[submodule "courses/macroquad/my-game"]
+	path = courses/macroquad/my-game
+	url = git@github.com:tushyagupta81/macroquad-tut.git
