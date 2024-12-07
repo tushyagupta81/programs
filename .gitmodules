@@ -58,3 +58,6 @@
 [submodule "courses/macroquad/my-game"]
 	path = courses/macroquad/my-game
 	url = git@github.com:tushyagupta81/macroquad-tut.git
+[submodule "valut"]
+	path = valut
+	url = git@github.com:tushyagupta81/ObsidianVault.git
