@@ -1,6 +1,7 @@
 use crate::TokenType::*;
 use core::fmt;
 use std::error::Error;
+use std::fmt::format;
 use std::string::String;
 
 pub struct Scanner {
@@ -9,6 +10,10 @@ pub struct Scanner {
     start: usize,
     current: usize,
     line: usize,
+}
+
+fn is_digit(ch: char) -> bool {
+    ch >= '0' && ch <= '9'
 }
 
 impl Scanner {
@@ -117,18 +122,46 @@ impl Scanner {
                 };
             }
 
-            '"' => {
-                match self.string_literal() {
-                    Err(e) => return Err(e),
-                    _ => (),
-                }
-            }
+            '"' => match self.string_literal() {
+                Err(e) => return Err(e),
+                _ => (),
+            },
 
             ' ' | '\r' | '\t' => (),
             '\n' => self.line += 1,
 
-            _ => return Err(format!("Unrecognised char {} at line {}", c, self.line).into()),
-            //_ => (),
+            c => {
+                if is_digit(c) {
+                    match self.number() {
+                        Err(e) => return Err(e),
+                        _ => (),
+                    }
+                } else {
+                    return Err(format!("Unrecognised char {} at line {}", c, self.line).into());
+                }
+            } 
+        }
+        Ok(())
+    }
+
+    fn number(self: &mut Self) -> Result<(),Box<dyn Error>> {
+        while is_digit(self.peek()) {
+            self.advance();
+        }
+
+        if self.peek() == '.' && is_digit(self.peek_next()) {
+            self.advance();
+            while is_digit(self.peek()) {
+                self.advance();
+            }
+        }
+
+        let s = &self.source.as_str()[self.start..self.current];
+        match s.parse::<f64>() {
+            Ok(v) => {
+                self.add_token_lit(Number, Some(LiteralValue::FloatValue(v)));
+            },
+            Err(_) => return Err(format!("Failed to parse number at line {}",self.line).into()),
         }
         Ok(())
     }
@@ -145,7 +178,7 @@ impl Scanner {
         }
     }
 
-    fn string_literal(self: &mut Self) -> Result<(),Box<dyn Error>> {
+    fn string_literal(self: &mut Self) -> Result<(), Box<dyn Error>> {
         while !self.is_at_end() && self.peek() != '"' {
             if self.peek() == '\n' {
                 self.line += 1;
@@ -156,9 +189,9 @@ impl Scanner {
         if self.is_at_end() {
             return Err("String is not terminated".into());
         }
-        let literal = &self.source.as_str()[self.start+1..self.current-1];
+        let literal = &self.source.as_str()[self.start + 1..self.current - 1];
         let literal = LiteralValue::StringValue(literal.to_string());
-        self.add_token_lit(TokenType::String_, Some(literal));
+        self.add_token_lit(String_, Some(literal));
         Ok(())
     }
 
@@ -167,6 +200,14 @@ impl Scanner {
             return '\0';
         }
         self.source.as_bytes()[self.current] as char
+    }
+
+    fn peek_next(self: &Self) -> char {
+        if self.current + 1 > self.source.len() {
+            return '\0';
+        } else {
+            self.source.as_bytes()[self.current + 1] as char
+        }
     }
 
     fn add_token(self: &mut Self, token_type: TokenType) {
@@ -326,6 +367,22 @@ mod tests {
         assert_eq!(scanner.tokens[3].token_type, BangEqual);
         assert_eq!(scanner.tokens[4].token_type, Eof);
 
+        Ok(())
+    }
+
+    #[test]
+    fn check_is_digit() -> Result<(), Box<dyn Error>> {
+        assert_eq!(is_digit('0'), true);
+        assert_eq!(is_digit('1'), true);
+        assert_eq!(is_digit('2'), true);
+        assert_eq!(is_digit('3'), true);
+        assert_eq!(is_digit('4'), true);
+        assert_eq!(is_digit('5'), true);
+        assert_eq!(is_digit('6'), true);
+        assert_eq!(is_digit('7'), true);
+        assert_eq!(is_digit('8'), true);
+        assert_eq!(is_digit('9'), true);
+        assert_eq!(is_digit('i'), false);
         Ok(())
     }
 }
