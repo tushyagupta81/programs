@@ -10,13 +10,13 @@ use std::process::exit;
 
 fn run_file(path: &str) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(path)?;
-    println!("{}", contents);
+    //println!("{}", contents);
     run(&contents)?;
     Ok(())
 }
 
 fn run(contents: &str) -> Result<(), Box<dyn Error>> {
-    let scanner = Scanner::new(contents);
+    let mut scanner = Scanner::new(contents);
     let tokens = scanner.scan_tokens()?;
 
     for token in tokens {
