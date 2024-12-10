@@ -139,12 +139,12 @@ impl Scanner {
                 } else {
                     return Err(format!("Unrecognised char {} at line {}", c, self.line).into());
                 }
-            } 
+            }
         }
         Ok(())
     }
 
-    fn number(self: &mut Self) -> Result<(),Box<dyn Error>> {
+    fn number(self: &mut Self) -> Result<(), Box<dyn Error>> {
         while is_digit(self.peek()) {
             self.advance();
         }
@@ -160,8 +160,8 @@ impl Scanner {
         match s.parse::<f64>() {
             Ok(v) => {
                 self.add_token_lit(Number, Some(LiteralValue::FloatValue(v)));
-            },
-            Err(_) => return Err(format!("Failed to parse number at line {}",self.line).into()),
+            }
+            Err(_) => return Err(format!("Failed to parse number at line {}", self.line).into()),
         }
         Ok(())
     }
@@ -383,6 +383,51 @@ mod tests {
         assert_eq!(is_digit('8'), true);
         assert_eq!(is_digit('9'), true);
         assert_eq!(is_digit('i'), false);
+        Ok(())
+    }
+
+    #[test]
+    fn string_literal_test() -> Result<(), Box<dyn Error>> {
+        let source = "\"Hello world\" ";
+        let mut scanner = Scanner::new(source);
+        scanner.scan_tokens()?;
+
+        assert_eq!(scanner.tokens.len(), 2);
+        assert_eq!(scanner.tokens[0].token_type, String_);
+        assert_eq!(scanner.tokens[1].token_type, Eof);
+
+        Ok(())
+    }
+
+    #[test]
+    fn string_literal_multilind_test() -> Result<(), Box<dyn Error>> {
+        let source = "\"Hello\nWorld\"\n";
+        let mut scanner = Scanner::new(source);
+        scanner.scan_tokens()?;
+
+        assert_eq!(scanner.tokens.len(), 2);
+        assert_eq!(scanner.tokens[0].token_type, String_);
+        assert_eq!(scanner.tokens[1].token_type, Eof);
+
+        Ok(())
+    }
+
+    #[test]
+    fn number_literal_test() -> Result<(), Box<dyn Error>> {
+        let source = "123.321\n432432.43242\n5.\n1\n.1";
+        let mut scanner = Scanner::new(source);
+        scanner.scan_tokens()?;
+
+        assert_eq!(scanner.tokens.len(), 8);
+        assert_eq!(scanner.tokens[0].token_type, Number);
+        assert_eq!(scanner.tokens[1].token_type, Number);
+        assert_eq!(scanner.tokens[2].token_type, Number);
+        assert_eq!(scanner.tokens[3].token_type, Dot);
+        assert_eq!(scanner.tokens[4].token_type, Number);
+        assert_eq!(scanner.tokens[5].token_type, Dot);
+        assert_eq!(scanner.tokens[6].token_type, Number);
+        assert_eq!(scanner.tokens[7].token_type, Eof);
+
         Ok(())
     }
 }
