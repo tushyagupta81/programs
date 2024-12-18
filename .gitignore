@@ -615,3 +615,7 @@ selenium-server*
 chromedriver*
 *.docx
 *.zip
+
+!DBMS file_compressed.pdf
+!DSA file_compressed.pdf
+!Web Tech file_compressed.pdf
