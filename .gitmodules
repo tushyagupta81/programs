@@ -4,12 +4,6 @@
 [submodule "followAlong/kata-machine"]
   path = followAlong/kata-machine
 	url = git@github.com:ThePrimeagen/kata-machine.git
-[submodule "courses/deepLearingSpecialization"]
-  path = courses/deepLearingSpecialization
-  url = git@github.com:amanchadha/coursera-deep-learning-specialization.git
-[submodule "courses/Machine-Learning-Specialization-Coursera"]
-	path = courses/Machine-Learning-Specialization-Coursera
-	url = git@github.com:greyhatguy007/Machine-Learning-Specialization-Coursera.git
 [submodule "followAlong/jsMastery/realtimeapp"]
   path = followAlong/jsMastery/realtimeapp
   url = git@github.com:tushyagupta81/realtimeNextjsCourse.git
@@ -46,9 +40,6 @@
 [submodule "followAlong/techWithTim/djangoReactNotes"]
   path = followAlong/techWithTim/djangoReact
   url = git@github.com:tushyagupta81/djangoReactNotes.git
-[submodule "courses/introduction_to_ml_with_python"]
-	path = courses/introduction_to_ml_with_python
-	url = git@github.com:tushyagupta81/introduction_to_ml_with_python.git
 [submodule "projects/naitikFoodApp"]
 	path = projects/naitikFoodApp
 	url = git@github.com:tushyagupta81/naitikFoodApp.git
