@@ -1,8 +1,7 @@
 use crate::TokenType::*;
 use core::fmt;
-use std::error::Error;
+use std::{collections::HashMap, error::Error};
 //use std::fmt::format;
-use phf::phf_map;
 use std::string::String;
 
 pub struct Scanner {
@@ -11,7 +10,7 @@ pub struct Scanner {
     start: usize,
     current: usize,
     line: usize,
-    keywords: phf::Map<&'static str, TokenType>,
+    keywords: HashMap<&'static str, TokenType>,
 }
 
 fn is_digit(ch: char) -> bool {
@@ -34,24 +33,24 @@ impl Scanner {
             start: 0,
             current: 0,
             line: 1,
-            keywords: phf_map! {
-                "and" => And,
-                "or" => Or,
-                "class" => Class,
-                "else" => Else,
-                "if" => If,
-                "true" => True,
-                "false" => False,
-                "for" => For,
-                "nil" => Nil,
-                "print" => Print,
-                "return" => Return,
-                "func" => Func,
-                "this" => This,
-                "while" => While,
-                "super" => Super,
-                "var" => Var,
-            },
+            keywords: HashMap::from([
+                ("and" , And),
+                ("or" , Or),
+                ("class" , Class),
+                ("else" , Else),
+                ("if" , If),
+                ("true" , True),
+                ("false" , False),
+                ("for" , For),
+                ("nil" , Nil),
+                ("print" , Print),
+                ("return" , Return),
+                ("func" , Func),
+                ("this" , This),
+                ("while" , While),
+                ("super" , Super),
+                ("var" , Var),
+            ]),
         }
     }
     pub fn scan_tokens(self: &mut Self) -> Result<Vec<Token>, Box<dyn Error>> {
@@ -346,10 +345,10 @@ pub enum LiteralValue {
 
 #[derive(Debug, Clone)]
 pub struct Token {
-    token_type: TokenType,
-    lexeme: String,
-    literal: Option<LiteralValue>,
-    line_number: usize,
+    pub token_type: TokenType,
+    pub lexeme: String,
+    pub literal: Option<LiteralValue>,
+    pub line_number: usize,
 }
 
 impl Token {
