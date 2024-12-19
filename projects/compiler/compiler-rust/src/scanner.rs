@@ -1,7 +1,8 @@
 use crate::TokenType::*;
 use core::fmt;
 use std::error::Error;
-use std::fmt::format;
+//use std::fmt::format;
+use phf::phf_map;
 use std::string::String;
 
 pub struct Scanner {
@@ -10,10 +11,19 @@ pub struct Scanner {
     start: usize,
     current: usize,
     line: usize,
+    keywords: phf::Map<&'static str, TokenType>,
 }
 
 fn is_digit(ch: char) -> bool {
     ch >= '0' && ch <= '9'
+}
+
+fn is_alpha(ch: char) -> bool {
+    (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || (ch == '_')
+}
+
+fn is_alpha_num(ch: char) -> bool {
+    is_alpha(ch) || is_digit(ch)
 }
 
 impl Scanner {
@@ -24,6 +34,24 @@ impl Scanner {
             start: 0,
             current: 0,
             line: 1,
+            keywords: phf_map! {
+                "and" => And,
+                "or" => Or,
+                "class" => Class,
+                "else" => Else,
+                "if" => If,
+                "true" => True,
+                "false" => False,
+                "for" => For,
+                "nil" => Nil,
+                "print" => Print,
+                "return" => Return,
+                "func" => Func,
+                "this" => This,
+                "while" => While,
+                "super" => Super,
+                "var" => Var,
+            },
         }
     }
     pub fn scan_tokens(self: &mut Self) -> Result<Vec<Token>, Box<dyn Error>> {
@@ -136,11 +164,29 @@ impl Scanner {
                         Err(e) => return Err(e),
                         _ => (),
                     }
+                } else if is_alpha(c) {
+                    self.identifier()?;
                 } else {
                     return Err(format!("Unrecognised char {} at line {}", c, self.line).into());
                 }
             }
         }
+        Ok(())
+    }
+
+    fn identifier(&mut self) -> Result<(), Box<dyn Error>> {
+        while is_alpha_num(self.peek()) {
+            self.advance();
+        }
+
+        let substring = &self.source[self.start..self.current];
+        let token_type;
+        match self.keywords.get(substring) {
+            Some(e) => token_type = e.clone(),
+            None => token_type = Identifier,
+        };
+
+        self.add_token(token_type);
         Ok(())
     }
 
@@ -387,6 +433,18 @@ mod tests {
     }
 
     #[test]
+    fn check_is_alpha() -> Result<(), Box<dyn Error>> {
+        assert_eq!(is_alpha('a'), true);
+        assert_eq!(is_alpha('z'), true);
+        assert_eq!(is_alpha('A'), true);
+        assert_eq!(is_alpha('Z'), true);
+        assert_eq!(is_alpha('-'), false);
+        assert_eq!(is_alpha('f'), true);
+        assert_eq!(is_alpha('F'), true);
+        Ok(())
+    }
+
+    #[test]
     fn string_literal_test() -> Result<(), Box<dyn Error>> {
         let source = "\"Hello world\" ";
         let mut scanner = Scanner::new(source);
@@ -430,4 +488,66 @@ mod tests {
 
         Ok(())
     }
+
+    #[test]
+    fn identifier_test() -> Result<(), Box<dyn Error>> {
+        let source = "hello this_ is a var_ and or class else if true false for nil print return func this while super var";
+        let mut scanner = Scanner::new(source);
+        scanner.scan_tokens()?;
+
+        assert_eq!(scanner.tokens.len(), 22);
+        assert_eq!(scanner.tokens[0].token_type, Identifier);
+        assert_eq!(scanner.tokens[1].token_type, Identifier);
+        assert_eq!(scanner.tokens[2].token_type, Identifier);
+        assert_eq!(scanner.tokens[3].token_type, Identifier);
+        assert_eq!(scanner.tokens[4].token_type, Identifier);
+        assert_eq!(scanner.tokens[5].token_type, And);
+        assert_eq!(scanner.tokens[6].token_type, Or);
+        assert_eq!(scanner.tokens[7].token_type, Class);
+        assert_eq!(scanner.tokens[8].token_type, Else);
+        assert_eq!(scanner.tokens[9].token_type, If);
+        assert_eq!(scanner.tokens[10].token_type, True);
+        assert_eq!(scanner.tokens[11].token_type, False);
+        assert_eq!(scanner.tokens[12].token_type, For);
+        assert_eq!(scanner.tokens[13].token_type, Nil);
+        assert_eq!(scanner.tokens[14].token_type, Print);
+        assert_eq!(scanner.tokens[15].token_type, Return);
+        assert_eq!(scanner.tokens[16].token_type, Func);
+        assert_eq!(scanner.tokens[17].token_type, This);
+        assert_eq!(scanner.tokens[18].token_type, While);
+        assert_eq!(scanner.tokens[19].token_type, Super);
+        assert_eq!(scanner.tokens[20].token_type, Var);
+        assert_eq!(scanner.tokens[21].token_type, Eof);
+
+        Ok(())
+    }
+
+        #[test]
+    fn full_test() -> Result<(), Box<dyn Error>> {
+        let source = "var x = 10;\nwhile x>1 { print(\"hello\"); }";
+        let mut scanner = Scanner::new(source);
+        scanner.scan_tokens()?;
+
+        assert_eq!(scanner.tokens.len(), 17);
+        assert_eq!(scanner.tokens[0].token_type, Var);
+        assert_eq!(scanner.tokens[1].token_type, Identifier);
+        assert_eq!(scanner.tokens[2].token_type, Equal);
+        assert_eq!(scanner.tokens[3].token_type, Number);
+        assert_eq!(scanner.tokens[4].token_type, Semicolon);
+        assert_eq!(scanner.tokens[5].token_type, While);
+        assert_eq!(scanner.tokens[6].token_type, Identifier);
+        assert_eq!(scanner.tokens[7].token_type, Greater);
+        assert_eq!(scanner.tokens[8].token_type, Number);
+        assert_eq!(scanner.tokens[9].token_type, LeftBrace);
+        assert_eq!(scanner.tokens[10].token_type, Print);
+        assert_eq!(scanner.tokens[11].token_type, LeftParen);
+        assert_eq!(scanner.tokens[12].token_type, String_);
+        assert_eq!(scanner.tokens[13].token_type, RightParen);
+        assert_eq!(scanner.tokens[14].token_type, Semicolon);
+        assert_eq!(scanner.tokens[15].token_type, RightBrace);
+        assert_eq!(scanner.tokens[16].token_type, Eof);
+
+        Ok(())
+    }
+
 }
