@@ -1,11 +1,30 @@
+use crate::{scanner, TokenType};
+
 use super::scanner::Token;
 
+#[derive(Clone, Debug)]
 pub enum LiteralValue {
     Number(f32),
     StringValue(String),
     True,
     False,
     Nil,
+}
+
+fn unwrap_as_f32(literal: Option<scanner::LiteralValue>) -> f32 {
+    match literal {
+        Some(scanner::LiteralValue::IntValue(x)) => x as f32,
+        Some(scanner::LiteralValue::FloatValue(x)) => x as f32,
+        _ => panic!("Couldnt unwrap as f32"),
+    }
+}
+
+fn unwrap_as_string(literal: Option<scanner::LiteralValue>) -> String {
+    match literal {
+        Some(scanner::LiteralValue::StringValue(s)) => s.clone(),
+        Some(scanner::LiteralValue::IdentifierValue(s)) => s.clone(),
+        _ => panic!("Couldnt unwrap to string"),
+    }
 }
 
 impl LiteralValue {
@@ -18,8 +37,20 @@ impl LiteralValue {
             LiteralValue::Nil => "nil".to_string(),
         }
     }
+
+    pub fn from_token(token: &Token) -> Self {
+        match token.token_type {
+            TokenType::Number => Self::Number(unwrap_as_f32(token.literal.clone())),
+            TokenType::String_ => Self::StringValue(unwrap_as_string(token.literal.clone())),
+            TokenType::True => Self::True,
+            TokenType::False => Self::False,
+            TokenType::Nil => Self::Nil,
+            _ => panic!("Cannot create literal from {:?}", token),
+        }
+    }
 }
 
+#[derive(Clone, Debug)]
 pub enum Expr {
     Binary {
         left: Box<Expr>,
@@ -55,7 +86,8 @@ impl Expr {
                 format!("(group {})", (*expression).to_string())
             }
             Expr::Literal { literal } => {
-                format!("{}", literal.to_string())
+                //format!("{}", literal.to_string())
+                literal.to_string()
             }
             Expr::Unary { operator, right } => {
                 let op_str = operator.lexeme.clone();
@@ -110,6 +142,7 @@ mod tests {
             right: group,
         };
 
+        ast.print();
         assert_eq!(ast.to_string(), "(* (- 123) (group 45.67))".to_string());
     }
 }

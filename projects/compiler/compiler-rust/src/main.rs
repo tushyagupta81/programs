@@ -1,5 +1,8 @@
 mod scanner;
 mod expr;
+mod parser;
+use parser::Parser;
+
 use crate::scanner::*;
 
 use std::env;
@@ -20,9 +23,11 @@ fn run(contents: &str) -> Result<(), Box<dyn Error>> {
     let mut scanner = Scanner::new(contents);
     let tokens = scanner.scan_tokens()?;
 
-    for token in tokens {
-        println!("{:?}", token);
-    }
+    let mut parser = Parser::new(tokens);
+    let parser_expr = parser.parse()?;
+    let string_expr = parser_expr.to_string();
+    println!("{:?}",parser_expr);
+    println!("{}",string_expr);
     Ok(())
 }
 
