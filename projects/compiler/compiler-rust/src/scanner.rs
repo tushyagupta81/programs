@@ -1,7 +1,6 @@
 use crate::TokenType::*;
 use core::fmt;
 use std::{collections::HashMap, error::Error};
-//use std::fmt::format;
 use std::string::String;
 
 pub struct Scanner {
@@ -14,11 +13,14 @@ pub struct Scanner {
 }
 
 fn is_digit(ch: char) -> bool {
-    ch >= '0' && ch <= '9'
+    //ch >= '0' && ch <= '9'
+    //('0'..='9').contains(&ch)
+    ch.is_ascii_digit()
 }
 
 fn is_alpha(ch: char) -> bool {
-    (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || (ch == '_')
+    //(ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || (ch == '_')
+    ch.is_ascii_alphabetic() || ch == '_'
 }
 
 fn is_alpha_num(ch: char) -> bool {
@@ -34,33 +36,32 @@ impl Scanner {
             current: 0,
             line: 1,
             keywords: HashMap::from([
-                ("and" , And),
-                ("or" , Or),
-                ("class" , Class),
-                ("else" , Else),
-                ("if" , If),
-                ("true" , True),
-                ("false" , False),
-                ("for" , For),
-                ("nil" , Nil),
-                ("print" , Print),
-                ("return" , Return),
-                ("func" , Func),
-                ("this" , This),
-                ("while" , While),
-                ("super" , Super),
-                ("var" , Var),
+                ("and", And),
+                ("or", Or),
+                ("class", Class),
+                ("else", Else),
+                ("if", If),
+                ("true", True),
+                ("false", False),
+                ("for", For),
+                ("nil", Nil),
+                ("print", Print),
+                ("return", Return),
+                ("func", Func),
+                ("this", This),
+                ("while", While),
+                ("super", Super),
+                ("var", Var),
             ]),
         }
     }
-    pub fn scan_tokens(self: &mut Self) -> Result<Vec<Token>, Box<dyn Error>> {
+    pub fn scan_tokens(&mut self) -> Result<Vec<Token>, Box<dyn Error>> {
         let mut errors = vec![];
         while !self.is_at_end() {
             self.start = self.current;
             // scann tokens in line
-            match self.scan_token() {
-                Err(e) => errors.push(e),
-                _ => (),
+            if let Err(e) = self.scan_token() {
+                errors.push(e)
             }
         }
         // After scanning everything push a EOF Token at the end
@@ -72,11 +73,11 @@ impl Scanner {
         });
 
         // If any error print all of them together
-        if errors.len() > 0 {
+        if !errors.is_empty() {
             let mut joined = "".to_string();
             errors.iter().for_each(|error| {
                 joined.push_str(format!("{}", error).as_str());
-                joined.push_str("\n");
+                joined.push('\n');
             });
             return Err(joined.into());
         }
@@ -84,11 +85,11 @@ impl Scanner {
     }
 
     // Check if we have exceded the length of the document/source
-    fn is_at_end(self: &Self) -> bool {
+    fn is_at_end(&self) -> bool {
         self.current >= self.source.len()
     }
 
-    fn scan_token(self: &mut Self) -> Result<(), Box<dyn Error>> {
+    fn scan_token(&mut self) -> Result<(), Box<dyn Error>> {
         let c = self.advance();
 
         match c {
@@ -149,20 +150,21 @@ impl Scanner {
                 };
             }
 
-            '"' => match self.string_literal() {
-                Err(e) => return Err(e),
-                _ => (),
-            },
+            '"' => {
+                self.string_literal()?;
+                //match self.string_literal() { Err(e) => return Err(e), _ => (), }
+            }
 
             ' ' | '\r' | '\t' => (),
             '\n' => self.line += 1,
 
             c => {
                 if is_digit(c) {
-                    match self.number() {
-                        Err(e) => return Err(e),
-                        _ => (),
-                    }
+                    self.number()?;
+                    //match self.number() {
+                    //    Err(e) => return Err(e),
+                    //    _ => (),
+                    //}
                 } else if is_alpha(c) {
                     self.identifier()?;
                 } else {
@@ -179,17 +181,16 @@ impl Scanner {
         }
 
         let substring = &self.source[self.start..self.current];
-        let token_type;
-        match self.keywords.get(substring) {
-            Some(e) => token_type = e.clone(),
-            None => token_type = Identifier,
+        let token_type = match self.keywords.get(substring) {
+            Some(e) => e.clone(),
+            None => Identifier,
         };
 
         self.add_token(token_type);
         Ok(())
     }
 
-    fn number(self: &mut Self) -> Result<(), Box<dyn Error>> {
+    fn number(&mut self) -> Result<(), Box<dyn Error>> {
         while is_digit(self.peek()) {
             self.advance();
         }
@@ -211,7 +212,7 @@ impl Scanner {
         Ok(())
     }
 
-    fn char_match(self: &mut Self, c: char) -> bool {
+    fn char_match(&mut self, c: char) -> bool {
         if self.is_at_end() {
             return false;
         }
@@ -223,7 +224,7 @@ impl Scanner {
         }
     }
 
-    fn string_literal(self: &mut Self) -> Result<(), Box<dyn Error>> {
+    fn string_literal(&mut self) -> Result<(), Box<dyn Error>> {
         while !self.is_at_end() && self.peek() != '"' {
             if self.peek() == '\n' {
                 self.line += 1;
@@ -240,27 +241,27 @@ impl Scanner {
         Ok(())
     }
 
-    fn peek(self: &Self) -> char {
+    fn peek(&self) -> char {
         if self.is_at_end() {
             return '\0';
         }
         self.source.as_bytes()[self.current] as char
     }
 
-    fn peek_next(self: &Self) -> char {
+    fn peek_next(&self) -> char {
         if self.current + 1 > self.source.len() {
-            return '\0';
+            '\0'
         } else {
             self.source.as_bytes()[self.current + 1] as char
         }
     }
 
-    fn add_token(self: &mut Self, token_type: TokenType) {
+    fn add_token(&mut self, token_type: TokenType) {
         self.add_token_lit(token_type, None);
     }
 
     // Add a token to the struct tokens vector
-    fn add_token_lit(self: &mut Self, token_type: TokenType, literal: Option<LiteralValue>) {
+    fn add_token_lit(&mut self, token_type: TokenType, literal: Option<LiteralValue>) {
         let text = &self.source.as_str()[self.start..self.current];
         self.tokens.push(Token {
             token_type,
@@ -271,7 +272,7 @@ impl Scanner {
     }
 
     // return current char and increment the pointer by 1
-    fn advance(self: &mut Self) -> char {
+    fn advance(&mut self) -> char {
         if self.is_at_end() {
             return '\0';
         }
@@ -366,7 +367,7 @@ impl Token {
         }
     }
 
-    pub fn to_string(self: &Self) -> String {
+    pub fn to_string(&self) -> String {
         format!("{} {} {:?}", self.token_type, self.lexeme, self.literal)
     }
 }
@@ -521,7 +522,7 @@ mod tests {
         Ok(())
     }
 
-        #[test]
+    #[test]
     fn full_test() -> Result<(), Box<dyn Error>> {
         let source = "var x = 10;\nwhile x>1 { print(\"hello\"); }";
         let mut scanner = Scanner::new(source);
@@ -548,5 +549,4 @@ mod tests {
 
         Ok(())
     }
-
 }
