@@ -1,7 +1,7 @@
 use crate::TokenType::*;
 use core::fmt;
-use std::{collections::HashMap, error::Error};
 use std::string::String;
+use std::{collections::HashMap, error::Error};
 
 pub struct Scanner {
     source: String,
