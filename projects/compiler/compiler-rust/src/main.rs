@@ -1,6 +1,6 @@
-mod scanner;
 mod expr;
 mod parser;
+mod scanner;
 use parser::Parser;
 
 use crate::scanner::*;
@@ -14,7 +14,6 @@ use std::process::exit;
 
 fn run_file(path: &str) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(path)?;
-    //println!("{}", contents);
     run(&contents)?;
     Ok(())
 }
@@ -26,8 +25,8 @@ fn run(contents: &str) -> Result<(), Box<dyn Error>> {
     let mut parser = Parser::new(tokens);
     let parser_expr = parser.parse()?;
     let string_expr = parser_expr.to_string();
-    println!("{:?}",parser_expr);
-    println!("{}",string_expr);
+    println!("Parsed value -> {}", string_expr);
+    println!("Evaluvated value -> {:?}", parser_expr.evaluvate());
     Ok(())
 }
 
@@ -45,7 +44,7 @@ fn run_promt() -> Result<(), Box<dyn Error>> {
             Ok(_) => (),
             Err(e) => println!("{}", e),
         }
-        println!("You typed: {}", buffer);
+        //println!("Echo: {}", buffer);
     }
     Ok(())
 }

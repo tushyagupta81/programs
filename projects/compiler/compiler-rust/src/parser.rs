@@ -13,7 +13,7 @@ impl Parser {
         Self { tokens, current: 0 }
     }
 
-    pub fn parse(&mut self) -> Result<Expr,String> {
+    pub fn parse(&mut self) -> Result<Expr, String> {
         self.expression()
     }
 
@@ -28,7 +28,7 @@ impl Parser {
             let rhs_expr = self.comparision()?;
             lhs_expr = Expr::Binary {
                 left: Box::from(lhs_expr),
-                opertaor: op,
+                operator: op,
                 right: Box::from(rhs_expr),
             };
         }
@@ -43,7 +43,7 @@ impl Parser {
             let rhs_expr = self.term()?;
             lhs_expr = Expr::Binary {
                 left: Box::from(lhs_expr),
-                opertaor: op,
+                operator: op,
                 right: Box::from(rhs_expr),
             }
         }
@@ -59,7 +59,7 @@ impl Parser {
             let rhs_expr = self.factor()?;
             lhs_expr = Expr::Binary {
                 left: Box::from(lhs_expr),
-                opertaor: op,
+                operator: op,
                 right: Box::from(rhs_expr),
             }
         }
@@ -75,7 +75,7 @@ impl Parser {
             let rhs_expr = self.unary()?;
             lhs_expr = Expr::Binary {
                 left: Box::from(lhs_expr),
-                opertaor: op,
+                operator: op,
                 right: Box::from(rhs_expr),
             }
         }
@@ -112,10 +112,10 @@ impl Parser {
                 result = Expr::Literal {
                     literal: LiteralValue::from_token(token),
                 };
+                self.advance();
             }
             _ => return Err(format!("{:?} is not a primary", self.peek())),
         }
-        self.advance();
         return Ok(result);
     }
 
