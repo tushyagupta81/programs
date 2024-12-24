@@ -40,6 +40,15 @@ impl LiteralValue {
         }
     }
 
+    pub fn to_type(&self) -> &str {
+        match self {
+            LiteralValue::Number(_) => "Number",
+            LiteralValue::StringValue(_) => "String",
+            LiteralValue::True | LiteralValue::False => "Boolean",
+            LiteralValue::Nil => "Nil",
+        }
+    }
+
     pub fn from_token(token: &Token) -> Self {
         match token.token_type {
             TokenType::Number => Self::Number(unwrap_as_f32(token.literal.clone())),
@@ -73,43 +82,11 @@ impl LiteralValue {
         }
     }
 
-    pub fn compare(&self, right: &Self) -> bool {
-        match self {
-            LiteralValue::Nil => {
-                if *right == LiteralValue::Nil {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-            LiteralValue::True => {
-                if *right == LiteralValue::True {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-            LiteralValue::False => {
-                if *right == LiteralValue::False {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-            LiteralValue::Number(e) => {
-                if *right == LiteralValue::Number(*e) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-            LiteralValue::StringValue(s) => {
-                if *right == LiteralValue::StringValue(s.clone()) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
+    pub fn from_bool(e: bool) -> Self {
+        if e {
+            LiteralValue::True
+        } else {
+            LiteralValue::False
         }
     }
 }
@@ -169,8 +146,9 @@ impl Expr {
                     (any, TokenType::Bang) => any.is_falsy(),
                     _ => {
                         return Err(format!(
-                            "{:?} Not not a valif Unary operator on {:?}",
-                            &operator.token_type, right
+                            "{:?} Not not a valid Unary operator on {}",
+                            &operator.token_type,
+                            right.to_type()
                         )
                         .into())
                     }
@@ -185,33 +163,30 @@ impl Expr {
                 let right = &right.evaluvate()?;
                 match (left, right, &(*operator).token_type) {
                     (LiteralValue::Number(a), LiteralValue::Number(b), TokenType::Greater) => {
-                        if a > b {
-                            LiteralValue::True
-                        } else {
-                            LiteralValue::False
-                        }
+                        LiteralValue::from_bool(a > b)
                     }
                     (LiteralValue::Number(a), LiteralValue::Number(b), TokenType::GreaterEqual) => {
-                        if a >= b {
-                            LiteralValue::True
-                        } else {
-                            LiteralValue::False
-                        }
+                        LiteralValue::from_bool(a >= b)
                     }
                     (LiteralValue::Number(a), LiteralValue::Number(b), TokenType::Less) => {
-                        if a < b {
-                            LiteralValue::True
-                        } else {
-                            LiteralValue::False
-                        }
+                        LiteralValue::from_bool(a < b)
                     }
                     (LiteralValue::Number(a), LiteralValue::Number(b), TokenType::LessEqual) => {
-                        if a <= b {
-                            LiteralValue::True
-                        } else {
-                            LiteralValue::False
-                        }
+                        LiteralValue::from_bool(a <= b)
                     }
+                    (LiteralValue::StringValue(a), LiteralValue::StringValue(b), TokenType::Greater) => {
+                        LiteralValue::from_bool(a > b)
+                    }
+                    (LiteralValue::StringValue(a), LiteralValue::StringValue(b), TokenType::GreaterEqual) => {
+                        LiteralValue::from_bool(a >= b)
+                    }
+                    (LiteralValue::StringValue(a), LiteralValue::StringValue(b), TokenType::Less) => {
+                        LiteralValue::from_bool(a < b)
+                    }
+                    (LiteralValue::StringValue(a), LiteralValue::StringValue(b), TokenType::LessEqual) => {
+                        LiteralValue::from_bool(a <= b)
+                    }
+
                     (LiteralValue::Number(a), LiteralValue::Number(b), TokenType::Star) => {
                         LiteralValue::Number(a * b)
                     }
@@ -231,24 +206,14 @@ impl Expr {
                         TokenType::Plus,
                     ) => LiteralValue::StringValue(format!("{}{}", a, b)),
 
-                    (left, right, TokenType::EqualEqual) => {
-                        if left.compare(right) {
-                            LiteralValue::True
-                        } else {
-                            LiteralValue::False
-                        }
-                    }
-                    (left, right, TokenType::BangEqual) => {
-                        if left.compare(right) {
-                            LiteralValue::False
-                        } else {
-                            LiteralValue::True
-                        }
-                    }
+                    (left, right, TokenType::EqualEqual) => LiteralValue::from_bool(left == right),
+                    (left, right, TokenType::BangEqual) => LiteralValue::from_bool(left != right),
                     _ => {
                         return Err(format!(
-                            "{:?} Not implemented on '{:?}' and '{:?}'",
-                            &operator.token_type, left, right
+                            "{} Not implemented on '{}' and '{}'",
+                            &operator.token_type,
+                            left.to_type(),
+                            right.to_type()
                         )
                         .into())
                     }
