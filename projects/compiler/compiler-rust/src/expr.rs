@@ -1,17 +1,6 @@
-use std::error::Error;
-
-use crate::{scanner, TokenType};
-
 use super::scanner::Token;
-
-#[derive(Clone, Debug, PartialEq)]
-pub enum LiteralValue {
-    Number(f32),
-    StringValue(String),
-    True,
-    False,
-    Nil,
-}
+use crate::{scanner, TokenType};
+use std::error::Error;
 
 fn unwrap_as_f32(literal: Option<scanner::LiteralValue>) -> f32 {
     match literal {
@@ -27,6 +16,15 @@ fn unwrap_as_string(literal: Option<scanner::LiteralValue>) -> String {
         Some(scanner::LiteralValue::IdentifierValue(s)) => s.clone(),
         _ => panic!("Couldnt unwrap to string"),
     }
+}
+
+#[derive(Clone, Debug, PartialEq)]
+pub enum LiteralValue {
+    Number(f32),
+    StringValue(String),
+    True,
+    False,
+    Nil,
 }
 
 impl LiteralValue {
@@ -174,18 +172,26 @@ impl Expr {
                     (LiteralValue::Number(a), LiteralValue::Number(b), TokenType::LessEqual) => {
                         LiteralValue::from_bool(a <= b)
                     }
-                    (LiteralValue::StringValue(a), LiteralValue::StringValue(b), TokenType::Greater) => {
-                        LiteralValue::from_bool(a > b)
-                    }
-                    (LiteralValue::StringValue(a), LiteralValue::StringValue(b), TokenType::GreaterEqual) => {
-                        LiteralValue::from_bool(a >= b)
-                    }
-                    (LiteralValue::StringValue(a), LiteralValue::StringValue(b), TokenType::Less) => {
-                        LiteralValue::from_bool(a < b)
-                    }
-                    (LiteralValue::StringValue(a), LiteralValue::StringValue(b), TokenType::LessEqual) => {
-                        LiteralValue::from_bool(a <= b)
-                    }
+                    (
+                        LiteralValue::StringValue(a),
+                        LiteralValue::StringValue(b),
+                        TokenType::Greater,
+                    ) => LiteralValue::from_bool(a > b),
+                    (
+                        LiteralValue::StringValue(a),
+                        LiteralValue::StringValue(b),
+                        TokenType::GreaterEqual,
+                    ) => LiteralValue::from_bool(a >= b),
+                    (
+                        LiteralValue::StringValue(a),
+                        LiteralValue::StringValue(b),
+                        TokenType::Less,
+                    ) => LiteralValue::from_bool(a < b),
+                    (
+                        LiteralValue::StringValue(a),
+                        LiteralValue::StringValue(b),
+                        TokenType::LessEqual,
+                    ) => LiteralValue::from_bool(a <= b),
 
                     (LiteralValue::Number(a), LiteralValue::Number(b), TokenType::Star) => {
                         LiteralValue::Number(a * b)

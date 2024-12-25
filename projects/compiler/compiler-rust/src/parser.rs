@@ -1,7 +1,9 @@
 use crate::expr::*;
 use crate::scanner::Token;
 use crate::scanner::TokenType::*;
+use crate::stmt::Stmt;
 use crate::TokenType;
+use std::error::Error;
 
 pub struct Parser {
     tokens: Vec<Token>,
@@ -13,15 +15,54 @@ impl Parser {
         Self { tokens, current: 0 }
     }
 
-    pub fn parse(&mut self) -> Result<Expr, String> {
-        self.expression()
+    pub fn parse(&mut self) -> Result<Vec<Stmt>, Box<dyn Error>> {
+        let mut stmts = vec![];
+        let mut errors = vec![];
+
+        while !self.is_at_end() {
+            let stmt = self.statement();
+            match stmt {
+                Ok(s) => stmts.push(s),
+                Err(e) => errors.push(e),
+            }
+        }
+
+        if errors.len() == 0 {
+            Ok(stmts)
+        } else {
+            let mut err = String::new();
+            for error in errors {
+                err.push_str(format!("{}{}", &error.to_string(), "\n").as_str());
+            }
+            Err(err.into())
+        }
     }
 
-    fn expression(&mut self) -> Result<Expr, String> {
+    fn statement(&mut self) -> Result<Stmt, Box<dyn Error>> {
+        if self.match_token(Print) {
+            self.print_expression()
+        } else {
+            self.expression_statement()
+        }
+    }
+
+    fn print_expression(&mut self) -> Result<Stmt, Box<dyn Error>> {
+        let val = self.expression()?;
+        self.consume(Semicolon, "Expected ';' after value")?;
+        Ok(Stmt::Print { expression: val })
+    }
+
+    fn expression_statement(&mut self) -> Result<Stmt, Box<dyn Error>> {
+        let expr = self.expression()?;
+        self.consume(Semicolon, "Expected ';' after expression")?;
+        Ok(Stmt::Expression { expression: expr })
+    }
+
+    fn expression(&mut self) -> Result<Expr, Box<dyn Error>> {
         self.equality()
     }
 
-    fn equality(&mut self) -> Result<Expr, String> {
+    fn equality(&mut self) -> Result<Expr, Box<dyn Error>> {
         let mut lhs_expr = self.comparision()?;
         while self.match_tokens(vec![BangEqual, EqualEqual]) {
             let op = self.previous().clone();
@@ -35,7 +76,7 @@ impl Parser {
         Ok(lhs_expr)
     }
 
-    fn comparision(&mut self) -> Result<Expr, String> {
+    fn comparision(&mut self) -> Result<Expr, Box<dyn Error>> {
         let mut lhs_expr = self.term()?;
 
         while self.match_tokens(vec![Greater, GreaterEqual, LessEqual, Less]) {
@@ -51,7 +92,7 @@ impl Parser {
         Ok(lhs_expr)
     }
 
-    fn term(&mut self) -> Result<Expr, String> {
+    fn term(&mut self) -> Result<Expr, Box<dyn Error>> {
         let mut lhs_expr = self.factor()?;
 
         while self.match_tokens(vec![Minus, Plus]) {
@@ -67,7 +108,7 @@ impl Parser {
         Ok(lhs_expr)
     }
 
-    fn factor(&mut self) -> Result<Expr, String> {
+    fn factor(&mut self) -> Result<Expr, Box<dyn Error>> {
         let mut lhs_expr = self.unary()?;
 
         while self.match_tokens(vec![Slash, Star]) {
@@ -83,7 +124,7 @@ impl Parser {
         Ok(lhs_expr)
     }
 
-    fn unary(&mut self) -> Result<Expr, String> {
+    fn unary(&mut self) -> Result<Expr, Box<dyn Error>> {
         if self.match_tokens(vec![Minus, Bang]) {
             let op = self.previous().clone();
             let rhs_expr = self.unary()?;
@@ -95,7 +136,7 @@ impl Parser {
         self.primary()
     }
 
-    fn primary(&mut self) -> Result<Expr, String> {
+    fn primary(&mut self) -> Result<Expr, Box<dyn Error>> {
         let token = self.peek();
 
         let result;
@@ -114,18 +155,18 @@ impl Parser {
                 };
                 self.advance();
             }
-            _ => return Err(format!("{:?} is not a primary", self.peek())),
+            _ => return Err(format!("{:?} is not a primary", self.peek()).into()),
         }
         return Ok(result);
     }
 
-    fn consume(&mut self, token_type: TokenType, msg: &str) -> Result<(), String> {
+    fn consume(&mut self, token_type: TokenType, msg: &str) -> Result<(), Box<dyn Error>> {
         let token = self.peek();
         if token.token_type == token_type {
             self.advance();
             Ok(())
         } else {
-            Err(msg.to_string())
+            Err(msg.to_string().into())
         }
     }
 
