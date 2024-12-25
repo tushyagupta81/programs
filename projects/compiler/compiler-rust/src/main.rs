@@ -1,7 +1,11 @@
 mod expr;
+mod interpreter;
 mod parser;
 mod scanner;
+mod stmt;
+use interpreter::Interpreter;
 use parser::Parser;
+use stmt::Stmt;
 
 use crate::scanner::*;
 
@@ -14,23 +18,28 @@ use std::process::exit;
 
 fn run_file(path: &str) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(path)?;
-    run(&contents)?;
+    let mut interpreter: Interpreter = Interpreter::new();
+    run(&mut interpreter, &contents)?;
+    //for line in contents.split(";") {
+    //    run(&mut interpreter,&line)?;
+    //}
     Ok(())
 }
 
-fn run(contents: &str) -> Result<(), Box<dyn Error>> {
+fn run(interpreter: &mut Interpreter, contents: &str) -> Result<(), Box<dyn Error>> {
     let mut scanner = Scanner::new(contents);
     let tokens = scanner.scan_tokens()?;
 
     let mut parser = Parser::new(tokens);
-    let parser_expr = parser.parse()?;
-    let string_expr = parser_expr.to_string();
-    println!("Parsed value -> {}", string_expr);
-    println!("Evaluvated value -> {:?}", parser_expr.evaluvate());
+
+    let stmts = parser.parse()?;
+    interpreter.interpret(stmts)?;
+
     Ok(())
 }
 
-fn run_promt() -> Result<(), Box<dyn Error>> {
+fn run_prompt() -> Result<(), Box<dyn Error>> {
+    let mut interpreter: Interpreter = Interpreter::new();
     loop {
         print!("> ");
         io::stdout().flush().unwrap();
@@ -40,7 +49,7 @@ fn run_promt() -> Result<(), Box<dyn Error>> {
         if buffer.trim() == "exit" || buffer.trim() == "" {
             break;
         }
-        match run(&buffer) {
+        match run(&mut interpreter, &buffer) {
             Ok(_) => (),
             Err(e) => println!("{}", e),
         }
@@ -53,7 +62,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     if args.len() == 1 {
-        match run_promt() {
+        match run_prompt() {
             Err(e) => {
                 println!("Error: {}", e);
                 exit(1);
@@ -68,7 +77,7 @@ fn main() {
             }
             _ => (),
         }
-    } else if args.len() > 2 {
+    } else {
         println!("Usage: script");
         println!("\tOR");
         println!("Usage: script [file path]");
