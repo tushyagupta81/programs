@@ -52,3 +52,6 @@
 [submodule "vault"]
 	path = vault
 	url = git@github.com:tushyagupta81/ObsidianVault.git
+[submodule "projects/compiler/interpreter-rust"]
+	path = projects/compiler/interpreter-rust
+	url = git@github.com:tushyagupta81/interpreter-rust.git
