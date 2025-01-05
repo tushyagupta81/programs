@@ -58,3 +58,6 @@
 [submodule "projects/goonj2025"]
 	path = projects/goonj2025
 	url = git@github.com:Jatin-1111/goonj2025.git
+[submodule "hackathons/sih2024"]
+	path = hackathons/sih2024
+	url = git@github.com:tushyagupta81/sih2024.git
