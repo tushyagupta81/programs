@@ -1,17 +1,22 @@
-//! By convention, main.zig is where your main function lives in the case that
-//! you are building an executable. If you are making a library, the convention
-//! is to delete this file and start with root.zig instead.
-
 const std = @import("std");
+const print = std.debug.print;
 
 pub fn main() !void {
-    // Prints to stderr (it's a shortcut based on `std.io.getStdErr()`)
-    std.debug.print("All your {s} are belong to us.\n", .{"codebase"});
+    var args = std.process.args();
+    _ = args.next().?;
+    if (args.next()) |arg| {
+        print("This is a file mode, file = {s}\n", .{arg});
+        const file = try std.fs.cwd().openFile(arg, .{});
+        defer file.close();
 
-    // stdout is for the actual output of your application, for example if you
-    // are implementing gzip, then only the compressed bytes should be sent to
-    // stdout, not any debugging messages.
-    const stdout = std.io.getStdOut().writer();
+        var buf_reader = std.io.bufferedReader(file.reader());
+        var in_stream = buf_reader.reader();
 
-    try stdout.print("Run `zig build test` to run the tests.\n", .{});
+        var buf: [1024]u8 = undefined;
+        while (try in_stream.readUntilDelimiterOrEof(&buf, '\n')) |line| {
+            print("{s}\n", .{line});
+        }
+    } else {
+        print("repl mode", .{});
+    }
 }
