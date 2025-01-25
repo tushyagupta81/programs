@@ -25,6 +25,13 @@ pub fn main() !void {
     const stdin = std.io.getStdIn().reader();
     var counter: u8 = 0;
 
+    try outw.print(
+        \\ -> letter exists and is in correct position
+        \\* -> letter exists in solution but is in the wrong location
+        \\! -> letter does not exist in the solution
+        \\
+        \\
+    , .{});
     var win = false;
     while (true) {
         if (counter >= 5) {
@@ -46,7 +53,10 @@ pub fn main() !void {
         win = true;
         for (guess, 0..) |letter, index| {
             if (letter == answer[index]) {
+                try outw.print("{c} ", .{letter});
+            } else if (std.mem.count(u8, answer, &[_]u8{letter}) >= 1) {
                 try outw.print("*{c} ", .{letter});
+                win = false;
             } else {
                 try outw.print("!{c} ", .{letter});
                 win = false;
