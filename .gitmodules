@@ -82,3 +82,7 @@
 	path = collage/ada25
 	url = git@github.com:tushyagupta81/ada25.git
 	branch = main
+[submodule "projects/dbmsProject"]
+	path = projects/dbmsProject
+	url = git@github.com:tushyagupta81/dbmsProj.git
+	branch = main
