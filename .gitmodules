@@ -86,3 +86,7 @@
 	path = projects/dbmsProject
 	url = git@github.com:tushyagupta81/dbmsProj.git
 	branch = main
+[submodule "projects/compiler/interpreter-zig"]
+	path = projects/compiler/interpreter-zig
+	url = git@github.com:tushyagupta81/interpreter-zig.git
+	branch = main
