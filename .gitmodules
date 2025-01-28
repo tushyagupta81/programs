@@ -90,3 +90,6 @@
 	path = projects/compiler/interpreter-zig
 	url = git@github.com:tushyagupta81/interpreter-zig.git
 	branch = main
+[submodule "hackathons/hacktu"]
+	path = hackathons/hacktu
+	url = git@github.com:tushyagupta81/codex.git
