@@ -93,3 +93,7 @@
 [submodule "hackathons/hacktu"]
 	path = hackathons/hacktu
 	url = git@github.com:tushyagupta81/codex.git
+[submodule "projects/osProj"]
+	path = projects/osProj
+	url = git@github.com:tushyagupta81/zig-os.git
+	branch = main
