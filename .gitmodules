@@ -97,3 +97,7 @@
 	path = projects/osProj
 	url = git@github.com:tushyagupta81/zig-os.git
 	branch = main
+[submodule "projects/compiler/hydrogen"]
+	path = projects/compiler/hydrogen
+	url = git@github.com:tushyagupta81/hydrogen.git
+	branch = main
