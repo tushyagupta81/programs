@@ -101,3 +101,7 @@
 	path = projects/compiler/hydrogen
 	url = git@github.com:tushyagupta81/hydrogen.git
 	branch = main
+[submodule "courses/Udemy"]
+	path = courses/Udemy
+	url = git@github.com:tushyagupta81/udemy.git
+	branch = main
