@@ -1,8 +1,9 @@
 # Programs
->An aggregate of all my programs
+
+> An aggregation of all my programs
 
 ## Main sepration
-1. [collage](https://github.com/tushyagupta81/programs/tree/main/collage)
+1. [college](https://github.com/tushyagupta81/programs/tree/main/collage)
     - Code for all my collage labs
 2. [courses](https://github.com/tushyagupta81/programs/tree/main/courses)
     - any course i am following
