@@ -78,8 +78,8 @@
 	path = hackathons/sih2024
 	url = git@github.com:tushyagupta81/sih2024.git
 	branch = main
-[submodule "collage/ada25"]
-	path = collage/ada25
+[submodule "college/ada25"]
+	path = college/ada25
 	url = git@github.com:tushyagupta81/ada25.git
 	branch = main
 [submodule "projects/dbmsProject"]
