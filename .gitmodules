@@ -2,10 +2,6 @@
   path = followAlong/jsMastery/3js
 	url = git@github.com:JavaScript-Mastery-Pro/gsap-cc-starter.git
 	branch = main
-[submodule "followAlong/kata-machine"]
-  path = followAlong/kata-machine
-	url = git@github.com:ThePrimeagen/kata-machine.git
-	branch = master
 [submodule "followAlong/jsMastery/realtimeapp"]
   path = followAlong/jsMastery/realtimeapp
   url = git@github.com:tushyagupta81/realtimeNextjsCourse.git
@@ -34,14 +30,6 @@
 	path = followAlong/pytorch-deep-learning
 	url = git@github.com:mrdbourke/pytorch-deep-learning.git
 	branch = main
-[submodule "projects/todo"]
-	path = projects/todo
-	url = git@github.com:tushyagupta81/todo.git
-	branch = main
-[submodule "projects/recipeApp"]
-	path = projects/recipeApp
-	url = git@github.com:tushyagupta81/recipeApp.git
-	branch = main
 [submodule "projects/bangaloreDashboard/dashboard2"]
   path = projects/bangaloreDashboard/dashboard2
   url = git@github.com:tushyagupta81/bangaloreDashboard.git
@@ -49,10 +37,6 @@
 [submodule "followAlong/techWithTim/djangoReactNotes"]
   path = followAlong/techWithTim/djangoReact
   url = git@github.com:tushyagupta81/djangoReactNotes.git
-	branch = main
-[submodule "projects/naitikFoodApp"]
-	path = projects/naitikFoodApp
-	url = git@github.com:tushyagupta81/naitikFoodApp.git
 	branch = main
 [submodule "hackathons/hackpec"]
 	path = hackathons/hackpec
