@@ -93,3 +93,7 @@
 	path = forks/tmux-floax
 	url = git@github.com:tushyagupta81/tmux-floax.git
 	branch = main
+[submodule "projects/arduino/arduino-examples"]
+	path = projects/arduino/arduino-examples
+	url = https://github.com/arduino/arduino-examples.git
+	branch = main
