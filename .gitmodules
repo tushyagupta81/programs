@@ -97,3 +97,7 @@
 	path = projects/arduino/arduino-examples
 	url = https://github.com/arduino/arduino-examples.git
 	branch = main
+[submodule "projects/amazonWebscrapper"]
+	path = projects/amazonWebscrapper
+	url = git@github.com:tushyagupta81/amazonWebscrapper.git
+	branch = main
