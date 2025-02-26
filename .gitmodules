@@ -26,10 +26,6 @@
   path = hackathons/boosthack2/financeApp
   url = git@github.com:tushyagupta81/boosthack2.git
 	branch = main
-[submodule "followAlong/pytorch-deep-learning"]
-	path = followAlong/pytorch-deep-learning
-	url = git@github.com:mrdbourke/pytorch-deep-learning.git
-	branch = main
 [submodule "projects/bangaloreDashboard/dashboard2"]
   path = projects/bangaloreDashboard/dashboard2
   url = git@github.com:tushyagupta81/bangaloreDashboard.git
