@@ -97,3 +97,7 @@
 	path = projects/amazonWebscrapper
 	url = git@github.com:tushyagupta81/amazonWebscrapper.git
 	branch = main
+[submodule "projects/compiler/interpreter-bytecode"]
+	path = projects/compiler/interpreter-bytecode
+	url = git@github.com:tushyagupta81/interpreter-bytecode.git
+	branch = main
