@@ -101,3 +101,7 @@
 	path = projects/compiler/interpreter-bytecode
 	url = git@github.com:tushyagupta81/interpreter-bytecode.git
 	branch = main
+[submodule "projects/billingSystem"]
+	path = projects/billingSystem
+	url = git@github.com:tushyagupta81/billingSystem.git
+	branch = main
