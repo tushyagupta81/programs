@@ -9,8 +9,8 @@ def init():
     os.makedirs(f"{GIT_DIR}/objects")
 
 
-def hash_object(data, type_='blob'):
-    obj = type_.encode() + b'\x00' + data
+def hash_object(data, type_="blob"):
+    obj = type_.encode() + b"\x00" + data
     oid = hashlib.sha1(obj).hexdigest()
     with open(f"{GIT_DIR}/objects/{oid}", "wb") as out:
         out.write(obj)
@@ -21,18 +21,32 @@ def get_contents(oid, expected=None):
     with open(f"{GIT_DIR}/objects/{oid}", "rb") as f:
         obj = f.read()
 
-    type_, _, content = obj.partition(b'\x00')
+    type_, _, content = obj.partition(b"\x00")
     type_ = type_.decode()
 
     if expected is not None:
-        assert type_ == expected, f'Expected {expected} but got {type_}'
+        assert type_ == expected, f"Expected {expected} but got {type_}"
     return content
 
 
-def set_HEAD(oid):
-    with open(f"{GIT_DIR}/HEAD",'w') as f:
+def update_ref(ref, oid):
+    ref_path = f"{GIT_DIR}/{ref}"
+    os.makedirs(os.path.dirname(ref_path), exist_ok=True)
+    with open(f"{GIT_DIR}/{ref}", "w") as f:
         f.write(oid)
 
-def get_HEAD():
-    with open(f"{GIT_DIR}/HEAD",'r') as f:
-        return f.read().strip()
+
+def get_ref(ref):
+    ref_path = f"{GIT_DIR}/{ref}"
+    if os.path.isfile(ref_path):
+        with open(ref_path) as f:
+            return f.read().strip()
+
+def iter_refs():
+    refs = ['HEAD']
+    for root,_,filenames, in os.walk(f"{GIT_DIR}/refs/"):
+        root = os.path.relpath(root, GIT_DIR)
+        refs.extend(f"{root}/{name}" for name in filenames)
+
+    for refname in refs:
+        yield refname, get_ref(refname)
