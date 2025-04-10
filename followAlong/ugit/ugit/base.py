@@ -4,7 +4,7 @@ from ugit import data
 
 import itertools
 import operator
-from collections import namedtuple
+from collections import namedtuple, deque
 
 
 def write_tree(directory="."):
@@ -90,7 +90,7 @@ def is_ignored(path):
 
 def commit(message):
     commit = f"tree {write_tree()}\n"
-    HEAD = data.get_ref("HEAD")
+    HEAD = data.get_ref("HEAD").value
     if HEAD:
         commit += f"parent {HEAD}\n"
     commit += "\n"
@@ -98,7 +98,7 @@ def commit(message):
 
     oid = data.hash_object(commit.encode(), "commit")
 
-    data.update_ref("HEAD", oid)
+    data.update_ref("HEAD", data.RefValue(symbolic=False, value=oid))
 
     return oid
 
@@ -127,19 +127,28 @@ def get_commit(oid):
     return Commit(tree=tree, parent=parent, message=message)
 
 
-def checkout(oid):
+def checkout(name):
+    oid = get_oid(name)
     commit = get_commit(oid)
     read_tree(commit.tree)
-    data.update_ref("HEAD", oid)
+    if is_branch(name):
+        HEAD = data.RefValue(symbolic=True,value=f'refs/heads/{name}')
+    else:
+        HEAD = data.RefValue(symbolic=False,value=oid)
 
+    data.update_ref('HEAD', HEAD, deref=False)
+
+
+def is_branch(branch):
+    return data.get_ref(f'refs/heads/{branch}').value is not None
 
 def create_tag(name, oid):
-    data.update_ref(f"refs/tags/{name}", oid)
+    data.update_ref(f"refs/tags/{name}", data.RefValue(symbolic=False, value=oid))
 
 
 def get_oid(name):
     if name == "@":
-        name = 'HEAD'
+        name = "HEAD"
 
     refs_to_try = [
         f"{name}",
@@ -148,9 +157,8 @@ def get_oid(name):
         f"refs/heads/{name}",
     ]
     for ref in refs_to_try:
-        oid = data.get_ref(ref)
-        if oid:
-            return oid
+        if data.get_ref(ref, deref = False).value:
+            return data.get_ref(ref).value
 
     is_hex = all(c in string.hexdigits for c in name)
     if len(name) == 40 and is_hex:
@@ -158,12 +166,13 @@ def get_oid(name):
 
     assert False, f"Unknown name {name}"
 
+
 def iter_commits_and_parents(oids):
-    oids = set(oids)
+    oids = deque(oids)
     visited = set()
 
     while oids:
-        oid = oids.pop()
+        oid = oids.popleft()
         if not oid or oid in visited:
             continue
 
@@ -171,5 +180,8 @@ def iter_commits_and_parents(oids):
         yield oid
 
         commit = get_commit(oid)
-        oids.add(commit.parent)
+        oids.appendleft(commit.parent)
 
+
+def create_branch(name, oid):
+    data.update_ref(f"refs/heads/{name}", data.RefValue(symbolic=False, value=oid))
