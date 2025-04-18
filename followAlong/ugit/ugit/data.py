@@ -34,11 +34,11 @@ RefValue = namedtuple("RefValue", ["symbolic", "value"])
 
 
 def update_ref(ref, value, deref=True):
-    ref = _get_ref_internal(ref,deref)[0]
+    ref = _get_ref_internal(ref, deref)[0]
 
     assert value.value
     if value.symbolic:
-        value = f'ref: {value.value}'
+        value = f"ref: {value.value}"
     else:
         value = value.value
 
@@ -48,11 +48,11 @@ def update_ref(ref, value, deref=True):
         f.write(value)
 
 
-def get_ref(ref,deref=True):
-    return _get_ref_internal(ref,deref)[1]
+def get_ref(ref, deref=True):
+    return _get_ref_internal(ref, deref)[1]
 
 
-def _get_ref_internal(ref,deref=True):
+def _get_ref_internal(ref, deref=True):
     ref_path = f"{GIT_DIR}/{ref}"
     value = None
     if os.path.isfile(ref_path):
@@ -68,7 +68,7 @@ def _get_ref_internal(ref,deref=True):
     return ref, RefValue(symbolic=symbolic, value=value)
 
 
-def iter_refs(deref=True):
+def iter_refs(prefix="", deref=True):
     refs = ["HEAD"]
     for (
         root,
@@ -79,4 +79,6 @@ def iter_refs(deref=True):
         refs.extend(f"{root}/{name}" for name in filenames)
 
     for refname in refs:
+        if not refname.startswith(prefix):
+            continue
         yield refname, get_ref(refname, deref=deref)
