@@ -3,6 +3,7 @@ import os
 from collections import namedtuple
 
 GIT_DIR = ".ugit"
+RefValue = namedtuple("RefValue", ["symbolic", "value"])
 
 
 def init():
@@ -28,9 +29,6 @@ def get_contents(oid, expected=None):
     if expected is not None:
         assert type_ == expected, f"Expected {expected} but got {type_}"
     return content
-
-
-RefValue = namedtuple("RefValue", ["symbolic", "value"])
 
 
 def update_ref(ref, value, deref=True):

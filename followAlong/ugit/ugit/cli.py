@@ -8,6 +8,7 @@ import sys
 
 from ugit import data
 from ugit import base
+from ugit import diff
 
 
 def main():
@@ -72,6 +73,10 @@ def parse_args() -> argparse.Namespace:
     reset_parser = commands.add_parser("reset")
     reset_parser.set_defaults(func=reset)
     reset_parser.add_argument("commit", type=oid)
+
+    show_parser = commands.add_parser("show")
+    show_parser.set_defaults(func=show)
+    show_parser.add_argument("oid", default="@", type=oid, nargs="?")
 
     return parser.parse_args()
 
@@ -193,3 +198,24 @@ def status(_):
 
 def reset(args):
     base.reset(args.commit)
+
+def _print_commit(oid,commit, refs=None):
+    refs_str = f" ({", ".join(refs)})" if refs else ""
+    print(f"commit {oid}{refs_str}\n")
+    print(textwrap.indent(commit.message, "  "))
+    print("")
+
+def show(args):
+    if not args.oid:
+        return
+    commit = base.get_commit(args.oid)
+    parent_tree = None
+    if commit.parent:
+        parent_tree=base.get_commit(commit.parent).tree
+
+    _print_commit(args.oid, commit)
+
+    result = diff.diff_trees(base.get_tree(parent_tree), base.get_tree(commit.tree))
+
+    sys.stdout.flush()
+    sys.stdout.buffer.write(result)
