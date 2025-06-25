@@ -73,10 +73,6 @@
 [submodule "hackathons/hacktu"]
 	path = hackathons/hacktu
 	url = git@github.com:tushyagupta81/codex.git
-[submodule "projects/osProj"]
-	path = projects/osProj
-	url = git@github.com:tushyagupta81/zig-os.git
-	branch = main
 [submodule "projects/compiler/hydrogen"]
 	path = projects/compiler/hydrogen
 	url = git@github.com:tushyagupta81/hydrogen.git
@@ -120,4 +116,8 @@
 [submodule "projects/nuls"]
 	path = projects/nuls
 	url = git@github.com:tushyagupta81/nuls.git
+	branch = main
+[submodule "followAlong/os_blog"]
+	path = followAlong/os_blog
+	url = git@github.com:tushyagupta81/os_blog.git
 	branch = main
