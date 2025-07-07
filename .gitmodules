@@ -121,3 +121,7 @@
 	path = followAlong/os_blog
 	url = git@github.com:tushyagupta81/os_blog.git
 	branch = main
+[submodule "forks/tmux-sessionx"]
+	path = forks/tmux-sessionx
+	url = git@github.com:tushyagupta81/tmux-sessionx.git
+	branch = main
