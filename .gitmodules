@@ -125,3 +125,7 @@
 	path = forks/tmux-sessionx
 	url = git@github.com:tushyagupta81/tmux-sessionx.git
 	branch = main
+[submodule "college/compter_graphics"]
+	path = college/compter_graphics
+	url = git@github.com:tushyagupta81/compter_graphics.git
+	branch = main
