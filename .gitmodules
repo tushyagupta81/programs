@@ -129,3 +129,7 @@
 	path = college/computer_graphics
 	url = git@github.com:tushyagupta81/computer_graphics.git
 	branch = main
+[submodule "forks/raylib-quickstart"]
+	path = forks/raylib-quickstart
+	url = git@github.com:tushyagupta81/raylib-quickstart.git
+	branch = main
