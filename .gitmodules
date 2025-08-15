@@ -133,3 +133,7 @@
 	path = forks/raylib-quickstart
 	url = git@github.com:tushyagupta81/raylib-quickstart.git
 	branch = main
+[submodule "followAlong/snake_ai"]
+	path = followAlong/snake_ai
+	url = git@github.com:tushyagupta81/snake_ai.git
+	branch = main
