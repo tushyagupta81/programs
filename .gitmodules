@@ -137,3 +137,7 @@
 	path = followAlong/snake_ai
 	url = git@github.com:tushyagupta81/snake_ai.git
 	branch = main
+[submodule "college/nlp"]
+	path = college/nlp
+	url = git@github.com:tushyagupta81/nlp_lab.git
+	branch = main
