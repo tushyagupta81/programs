@@ -105,10 +105,6 @@
 	path = projects/typingPractice
 	url = git@github.com:tushyagupta81/typingPractice.git
 	branch = main
-[submodule "projects/chess_engine"]
-	path = projects/chess_engine
-	url = git@github.com:tushyagupta81/chess_engine.git
-	branch = main
 [submodule "followAlong/os-tutorial"]
 	path = followAlong/os-tutorial
 	url = git@github.com:tushyagupta81/os-tutorial.git
