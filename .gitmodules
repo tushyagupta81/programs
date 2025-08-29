@@ -137,3 +137,11 @@
 	path = college/nlp
 	url = git@github.com:tushyagupta81/nlp_lab.git
 	branch = main
+[submodule "projects/chess_engine/chess_engine_zig"]
+	path = projects/chess_engine/chess_engine_zig
+	url = git@github.com:tushyagupta81/chess_engine_zig.git
+	branch = main
+[submodule "projects/chess_engine/chess_engine_c"]
+	path = projects/chess_engine/chess_engine_c
+	url = git@github.com:tushyagupta81/chess_engine_c.git
+	branch = main
