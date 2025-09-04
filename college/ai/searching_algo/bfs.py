@@ -19,7 +19,7 @@ def bfs(graph, start, goal):
     while not q.empty():
         vertex = q.get()
         if vertex == goal:
-            print(f"{vertex} > ", end="")
+            print(f"{vertex}")
             return
         if vertex not in visited:
             print(f"{vertex} > ", end="")
@@ -30,5 +30,7 @@ def bfs(graph, start, goal):
                     q.put(node)
 
 
-bfs(graph, "A", "C")
+start = input("Starting Node: ").upper()
+goal = input("Ending Node: ").upper()
+bfs(graph, start, goal)
 print()
