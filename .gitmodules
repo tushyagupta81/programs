@@ -145,3 +145,7 @@
 	path = projects/chess_engine/chess_engine_c
 	url = git@github.com:tushyagupta81/chess_engine_c.git
 	branch = main
+[submodule "projects/compiler/kaleidoscope_llvm"]
+	path = projects/compiler/kaleidoscope_llvm
+	url = git@github.com:tushyagupta81/kaleidoscope_llvm.git
+	branch = main
