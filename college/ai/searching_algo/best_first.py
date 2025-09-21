@@ -18,16 +18,14 @@ def best_first(graph: dict[str, list[tuple[str, int]]], start: str, goal: str):
     while pq:
         _, node, path = heapq.heappop(pq)
         print(f"{node} ", end="")
-
         if node == goal:
             return path
-        if node in visited:
-            continue
 
         visited.add(node)
 
         for n, cost in graph[node]:
-            heapq.heappush(pq, (cost, n, path + [n]))
+            if n not in visited:
+                heapq.heappush(pq, (cost, n, path + [n]))
 
 
 path = best_first(graph, "A", "E")
