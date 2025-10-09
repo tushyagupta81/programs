@@ -149,3 +149,7 @@
 	path = projects/compiler/kaleidoscope_llvm
 	url = git@github.com:tushyagupta81/kaleidoscope_llvm.git
 	branch = main
+[submodule "projects/paper_checking"]
+	path = projects/paper_checking
+	url = git@github.com:tushyagupta81/paper_checking.git
+	branch = main
