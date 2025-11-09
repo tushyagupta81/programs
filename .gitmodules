@@ -153,3 +153,7 @@
 	path = projects/paper_checking
 	url = git@github.com:tushyagupta81/paper_checking.git
 	branch = main
+[submodule "projects/portfolio"]
+	path = projects/portfolio
+	url = git@github.com:tushyagupta81/portfolio.git
+	branch = main
