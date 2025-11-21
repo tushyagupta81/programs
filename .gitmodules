@@ -157,3 +157,7 @@
 	path = projects/portfolio
 	url = git@github.com:tushyagupta81/portfolio.git
 	branch = main
+[submodule "hackathons/pecathon"]
+	path = hackathons/pecathon
+	url = git@github.com:PECATHON/36_TechSupport.git
+	branch = main
