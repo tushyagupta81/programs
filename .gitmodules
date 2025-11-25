@@ -161,3 +161,7 @@
 	path = hackathons/pecathon
 	url = git@github.com:PECATHON/36_TechSupport.git
 	branch = main
+[submodule "projects/bit_torrent"]
+	path = projects/bit_torrent
+	url = git@github.com:tushyagupta81/bit_torrent.git
+	branch = main
