@@ -165,3 +165,7 @@
 	path = projects/bit_torrent
 	url = git@github.com:tushyagupta81/bit_torrent.git
 	branch = main
+[submodule "projects/emulator/chip8"]
+	path = projects/emulator/chip8
+	url = git@github.com:tushyagupta81/chip8.git
+	branch = main
