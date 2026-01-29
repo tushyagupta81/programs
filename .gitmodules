@@ -169,3 +169,7 @@
 	path = projects/terminal-portfolio
 	url = git@github.com:tushyagupta81/terminal-portfolio.git
 	branch = main
+[submodule "college/data_analysis"]
+	path = college/data_analysis
+	url = git@github.com:tushyagupta81/data_analysis_lab.git
+	branch = main
