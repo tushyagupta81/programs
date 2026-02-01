@@ -173,3 +173,7 @@
 	path = college/data_analysis
 	url = git@github.com:tushyagupta81/data_analysis_lab.git
 	branch = main
+[submodule "projects/emulator/gameboy_dmg"]
+	path = projects/emulator/gameboy_dmg
+	url = git@github.com:tushyagupta81/gameboy_dmg.git
+	branch = main
