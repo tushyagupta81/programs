@@ -177,3 +177,11 @@
 	path = projects/emulator/gameboy_dmg
 	url = git@github.com:tushyagupta81/gameboy_dmg.git
 	branch = main
+[submodule "college/software_testing"]
+	path = college/software_testing
+	url = git@github.com:tushyagupta81/software_testing_lab.git
+	branch = main
+[submodule "college/digital_image"]
+	path = college/digital_image
+	url = git@github.com:tushyagupta81/digital_image_lab.git
+	branch = main
