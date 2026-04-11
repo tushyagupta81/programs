@@ -185,3 +185,7 @@
 	path = college/digital_image
 	url = git@github.com:tushyagupta81/digital_image_lab.git
 	branch = main
+[submodule "projects/sqlite"]
+	path = projects/sqlite
+	url = git@github.com:tushyagupta81/sqlite.git
+	branch = main
