@@ -189,3 +189,7 @@
 	path = projects/sqlite
 	url = git@github.com:tushyagupta81/sqlite.git
 	branch = main
+[submodule "courses/cs50_2d"]
+	path = courses/cs50_2d
+	url = git@github.com:tushyagupta81/cs50_2d.git
+	branch = main
