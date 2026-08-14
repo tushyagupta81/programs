@@ -193,3 +193,7 @@
 	path = courses/cs50_2d
 	url = git@github.com:tushyagupta81/cs50_2d.git
 	branch = main
+[submodule "college/deep_learning"]
+	path = college/deep_learning
+	url = git@github.com:tushyagupta81/dlnn.git
+	branch = main
