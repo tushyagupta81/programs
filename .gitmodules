@@ -197,3 +197,7 @@
 	path = college/deep_learning
 	url = git@github.com:tushyagupta81/dlnn.git
 	branch = main
+[submodule "projects/minor_project"]
+	path = projects/minor_project
+	url = git@github.com:tushyagupta81/minor_project.git
+	branch = main
