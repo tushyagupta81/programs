@@ -201,3 +201,7 @@
 	path = projects/minor_project
 	url = git@github.com:tushyagupta81/minor_project.git
 	branch = main
+[submodule "forks/urx_qmk_firmware"]
+	path = forks/urx_qmk_firmware
+	url = git@github.com:tushyagupta81/urx_qmk_firmware.git
+	branch = core75-vial
